@@ -22,8 +22,8 @@ $about_image = get_field('about_image', $page_id);
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="page-title">About Us</h1>
-                <p class="page-subtitle">Creating Unforgettable Moments Since 2010</p>
+                <h1 class="page-title wow animate__animated animate__fadeInDown">About Us</h1>
+                <p class="page-subtitle wow animate__animated animate__fadeInUp">Creating Unforgettable Moments Since 2010</p>
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@ $about_image = get_field('about_image', $page_id);
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4 mb-lg-0">
-                <div class="scroll-animate">
+                <div class="wow animate__animated animate__fadeInRight">
                     <h2 class="section-title-simple mb-4">Welcome to Krishna Events</h2>
                     <p class="know-about-text">
                         <?php
@@ -49,7 +49,7 @@ $about_image = get_field('about_image', $page_id);
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="scroll-animate delay-2">
+                <div class="wow animate__animated animate__fadeInLeft">
                     <?php if ($about_image): ?>
                     <img src="<?php echo esc_url($about_image['url']); ?>"
                         alt="<?php echo esc_attr($about_image['alt']); ?>" class="img-fluid about-image shadow">
@@ -96,7 +96,7 @@ $about_image = get_field('about_image', $page_id);
 <!-- Call to Action Section -->
 <section id="about-cta" class="py-5 bg-gradient-primary text-white section-overlay">
     <div class="container text-center">
-        <div class="scroll-animate">
+        <div class="wow animate__animated animate__zoomIn">
             <h2 class="mb-4" style="font-size: 2.5rem; font-weight: 700;">Ready to Plan Your Dream Event?</h2>
             <p class="lead mb-4" style="font-size: 1.2rem;">Let's create something magical together. Contact us today
                 for a free consultation!</p>
@@ -117,14 +117,14 @@ $about_image = get_field('about_image', $page_id);
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-5 mb-4 mb-lg-0">
-                <div class="scroll-animate">
+                <div class="wow animate__animated animate__fadeInLeft">
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/quality-policy.jpg"
                         alt="Quality Policy" class="img-fluid about-image"
                         onerror="this.src='https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&h=600&fit=crop'">
                 </div>
             </div>
             <div class="col-lg-7">
-                <div class="scroll-animate delay-2">
+                <div class="wow animate__animated animate__fadeInRight">
                     <h2 class="section-title-simple mb-4">Our Quality Policy</h2>
                     <p class="about-text">At Krishna Events, quality is not just a promise – it's our foundation. We are
                         committed to:</p>

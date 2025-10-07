@@ -17,8 +17,8 @@ $page_id = get_the_ID();
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="page-title">Video Gallery</h1>
-                <p class="page-subtitle">Watch Our Amazing Events</p>
+                <h1 class="page-title wow animate__animated animate__fadeInDown">Video Gallery</h1>
+                <p class="page-subtitle wow animate__animated animate__fadeInUp">Watch Our Amazing Events</p>
             </div>
         </div>
     </div>

@@ -17,8 +17,8 @@ $page_id = get_the_ID();
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="page-title">Contact Us</h1>
-                <p class="page-subtitle">Get In Touch With Us</p>
+                <h1 class="page-title wow animate__animated animate__fadeInDown">Contact Us</h1>
+                <p class="page-subtitle wow animate__animated animate__fadeInUp">Get In Touch With Us</p>
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@ $page_id = get_the_ID();
             <!-- Contact Card 1 - Address -->
             <?php if ($address): ?>
             <div class="col-lg-3 col-md-6">
-                <div class="contact-card">
+                <div class="contact-card wow animate__animated animate__fadeInUp">
                     <div class="contact-card-icon">
                         <i class="fa fa-map-marker"></i>
                     </div>
@@ -59,7 +59,7 @@ $page_id = get_the_ID();
             <!-- Contact Card 2 - Phone -->
             <?php if ($phone): ?>
             <div class="col-lg-3 col-md-6">
-                <div class="contact-card">
+                <div class="contact-card wow animate__animated animate__fadeInUp">
                     <div class="contact-card-icon">
                         <i class="fa fa-phone"></i>
                     </div>
@@ -74,7 +74,7 @@ $page_id = get_the_ID();
             <!-- Contact Card 3 - Email -->
             <?php if ($email): ?>
             <div class="col-lg-3 col-md-6">
-                <div class="contact-card">
+                <div class="contact-card wow animate__animated animate__fadeInUp">
                     <div class="contact-card-icon">
                         <i class="fa fa-envelope"></i>
                     </div>
@@ -87,7 +87,7 @@ $page_id = get_the_ID();
             <!-- Contact Card 4 - Business Hours -->
             <?php if ($business_hours): ?>
             <div class="col-lg-3 col-md-6">
-                <div class="contact-card">
+                <div class="contact-card wow animate__animated animate__fadeInUp">
                     <div class="contact-card-icon">
                         <i class="fa fa-clock-o"></i>
                     </div>
@@ -102,7 +102,7 @@ $page_id = get_the_ID();
         <?php if ($facebook_url || $instagram_url || $twitter_url || $youtube_url): ?>
         <div class="row mt-5">
             <div class="col-12">
-                <div class="social-section text-center">
+                <div class="social-section text-center wow animate__animated animate__fadeInUp">
                     <h3 class="mb-4">Connect With Us</h3>
                     <div class="social-links-wrapper">
                         <?php if ($facebook_url): ?>

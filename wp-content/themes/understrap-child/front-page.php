@@ -132,16 +132,13 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4 mb-lg-0">
-                <div class="scroll-animate">
-                    <h2 class="section-title-simple mb-4"><?= $about_title ?></h2>
-                    <p class="know-about-text"><?= $about_description ?></p>
+                <div class="wow animate__animated animate__fadeInRight">
+                    <h2 class="section-title-simple mb-4"><?php echo $about_title; ?></h2>
+                    <p class="know-about-text"><?php echo $about_description; ?></p>
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="scroll-animate delay-2">
-                    <!-- <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/about-krishna.jpg"
-                        alt="About Krishna Events" class="img-fluid about-image"
-                        onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&h=400&fit=crop'"> -->
+                <div class="wow animate__animated animate__fadeInLeft">
                     <?php if ($about_image): ?>
                     <img src="<?php echo esc_url($about_image['url']); ?>"
                         alt="<?php echo esc_attr($about_image['alt']); ?>" class="img-fluid about-image shadow">
@@ -157,8 +154,8 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="services-overview" class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title-simple scroll-animate">Our Services</h2>
-            <p class="lead scroll-animate delay-1">Complete Event Management Solutions</p>
+            <h2 class="section-title-simple wow animate__animated animate__fadeInUp">Our Services</h2>
+            <p class="lead wow animate__animated animate__fadeInUp">Complete Event Management Solutions</p>
         </div>
         <div class="row g-4">
             <?php
@@ -166,7 +163,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 
             foreach ($services as $index => $service) : ?>
             <div class="col-md-4">
-                <div class="service-list-card scroll-animate <?php echo $index >= 3 ? 'delay-1' : ''; ?>">
+                <div class="service-list-card wow animate__animated animate__fadeInUp">
                     <i class="fa fa-check-circle"></i>
                     <h5><?php echo $service->post_title; ?></h5>
                 </div>
@@ -181,30 +178,30 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
     <div class="container">
         <div class="row text-center">
             <div class="col-md-3 col-6 mb-4">
-                <div class="scroll-animate">
+                <div class="wow animate__animated animate__fadeRight">
                     <div class="counter" data-count="500" style="font-size: 3rem; font-weight: 700;">
-                        <?= $happy_customers ?></div>
+                        <?php echo $happy_customers; ?></div>
                     <p style="font-size: 1.1rem;">Happy Customers</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 mb-4">
-                <div class="scroll-animate delay-1">
+                <div class="wow animate__animated animate__fadeIn">
                     <div class="counter" data-count="1000" style="font-size: 3rem; font-weight: 700;">
-                        <?= $events_completed ?></div>
+                        <?php echo $events_completed; ?></div>
                     <p style="font-size: 1.1rem;">Events Completed</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 mb-4">
-                <div class="scroll-animate delay-2">
+                <div class="wow animate__animated animate__fadeIn">
                     <div class="counter" data-count="50" style="font-size: 3rem; font-weight: 700;">
-                        <?= $team_members ?></div>
+                        <?php echo $team_members; ?></div>
                     <p style="font-size: 1.1rem;">Team Members</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 mb-4">
-                <div class="scroll-animate delay-3">
+                <div class="wow animate__animated animate__fadeLeft">
                     <div class="counter" data-count="15" style="font-size: 3rem; font-weight: 700;">
-                        <?= $years_experience ?></div>
+                        <?php echo $years_experience; ?></div>
                     <p style="font-size: 1.1rem;">Years Experience</p>
                 </div>
             </div>
@@ -216,12 +213,12 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="why-choose-us" class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title-simple scroll-animate">Why Choose Krishna Events?</h2>
-            <p class="lead scroll-animate delay-1">What Makes Us Different</p>
+            <h2 class="section-title-simple wow animate__animated animate__fadeInUp">Why Choose Krishna Events?</h2>
+            <p class="lead wow animate__animated animate__fadeInUp">What Makes Us Different</p>
         </div>
         <div class="row g-4">
             <div class="col-md-6 col-lg-3">
-                <div class="feature-box scroll-animate">
+                <div class="feature-box wow animate__animated animate__fadeInUp">
                     <div class="feature-icon">
                         <i class="fa fa-users"></i>
                     </div>
@@ -231,7 +228,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="feature-box scroll-animate delay-1">
+                <div class="feature-box wow animate__animated animate__fadeInUp">
                     <div class="feature-icon">
                         <i class="fa fa-globe"></i>
                     </div>
@@ -241,7 +238,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="feature-box scroll-animate delay-2">
+                <div class="feature-box wow animate__animated animate__fadeInUp">
                     <div class="feature-icon">
                         <i class="fa fa-lightbulb-o"></i>
                     </div>
@@ -250,7 +247,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="feature-box scroll-animate delay-3">
+                <div class="feature-box wow animate__animated animate__fadeInUp">
                     <div class="feature-icon">
                         <i class="fa fa-money"></i>
                     </div>
@@ -267,7 +264,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="gallery" class="py-5 bg-white">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title-simple scroll-animate">Photo Gallery</h2>
+            <h2 class="section-title-simple wow animate__animated animate__fadeInUp">Photo Gallery</h2>
         </div>
 
         <div class="row g-3">
@@ -278,7 +275,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
                 $gallery_image = get_the_post_thumbnail_url($item->ID, 'large');
                 if ($gallery_image) : ?>
             <div class="col-md-4 col-sm-6">
-                <div class="gallery-item scroll-animate">
+                <div class="gallery-item wow animate__animated animate__zoomIn">
                     <img src="<?php echo esc_url($gallery_image); ?>" alt="<?php echo esc_attr($item->post_title); ?>"
                         class="img-fluid">
                 </div>
@@ -293,8 +290,8 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="testimonials" class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title underline scroll-animate">What Our Customers Say</h2>
-            <p class="lead scroll-animate delay-1">Read testimonials from our happy customers</p>
+            <h2 class="section-title underline wow animate__animated animate__fadeInUp">What Our Customers Say</h2>
+            <p class="lead wow animate__animated animate__fadeInUp">Read testimonials from our happy customers</p>
         </div>
 
         <div class="row g-4">
@@ -303,7 +300,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 
             foreach ($testimonials as $index => $testimonial) : ?>
             <div class="col-md-6 col-lg-4">
-                <div class="testimonial-card scroll-animate delay-<?php echo ($index + 1); ?>">
+                <div class="testimonial-card wow animate__animated animate__fadeInUp">
                     <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem;">
                         "<?php echo wp_trim_words($testimonial->post_content, 30); ?>"
                     </p>
@@ -319,25 +316,25 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="contact-section" class="contact-section py-5">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title underline scroll-animate">Get In Touch</h2>
-            <p class="lead scroll-animate delay-1">Have questions? We'd love to hear from you!</p>
+            <h2 class="section-title underline wow animate__animated animate__fadeInUp">Get In Touch</h2>
+            <p class="lead wow animate__animated animate__fadeInUp">Have questions? We'd love to hear from you!</p>
         </div>
 
         <div class="row g-4 text-center">
             <!-- Phone -->
             <div class="col-md-4">
-                <div class="scroll-animate">
+                <div class="wow animate__animated animate__fadeInUp">
                     <div class="icon-box" style="margin: 0 auto 5px;">
                         <i class="fa fa-phone"></i>
                     </div>
                     <h5 style="font-weight: 700; margin-bottom: 5px; font-size: 1.3rem; color: #333;">Phone</h5>
-                    <p style="color: #666; margin: 0; font-size: 1rem;"><a href="tel:+91<?= $phone ?>"
+                    <p style="color: #666; margin: 0; font-size: 1rem;"><a href="tel:+91<?php echo $phone; ?>"
                             style="color: #666; text-decoration: none; font-weight: 500;">
-                            +91 <?= $phone ?>
+                            +91 <?php echo $phone; ?>
                         </a>
-                        ,<a href="tel:+91<?= $phone_number_two ?>"
+                        ,<a href="tel:+91<?php echo $phone_number_two; ?>"
                             style="color: #666; text-decoration: none; font-weight: 500;">
-                            +91 <?= $phone_number_two ?>
+                            +91 <?php echo $phone_number_two; ?>
                         </a>
                     </p>
                 </div>
@@ -345,25 +342,25 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 
             <!-- Email -->
             <div class="col-md-4">
-                <div class="scroll-animate delay-1">
+                <div class="wow animate__animated animate__fadeInUp">
                     <div class="icon-box" style="margin: 0 auto 5px;">
                         <i class="fa fa-envelope"></i>
                     </div>
                     <h5 style="font-weight: 700; margin-bottom: 5px; font-size: 1.3rem; color: #333;">Email</h5>
-                    <p style="color: #666; margin: 0; font-size: 1rem;"><a href="mailto:<?= $email ?>"
-                            style="color: #666; text-decoration: none; font-weight: 500;"><?= $email ?></a>
+                    <p style="color: #666; margin: 0; font-size: 1rem;"><a href="mailto:<?php echo $email; ?>"
+                            style="color: #666; text-decoration: none; font-weight: 500;"><?php echo $email; ?></a>
                     </p>
                 </div>
             </div>
 
             <!-- Address -->
             <div class="col-md-4">
-                <div class="scroll-animate delay-2">
+                <div class="wow animate__animated animate__fadeInUp">
                     <div class="icon-box" style="margin: 0 auto 5px;">
                         <i class="fa fa-map-marker"></i>
                     </div>
                     <h5 style="font-weight: 700; margin-bottom: 5px; font-size: 1.3rem; color: #333;">Address</h5>
-                    <p style="color: #666; margin: 0; font-size: 1rem; font-weight: 500;"><?= $address ?>
+                    <p style="color: #666; margin: 0; font-size: 1rem; font-weight: 500;"><?php echo $address; ?>
                     </p>
                 </div>
             </div>

@@ -365,3 +365,16 @@ function my_register_video_gallery_cpt()
 	register_post_type('video_gallery', $args);
 }
 add_action('init', 'my_register_video_gallery_cpt');
+
+// Enqueue Animate.css and WOW.js
+function enqueue_animate_css() {
+	// Enqueue Animate.css from CDN
+	wp_enqueue_style('animate-css', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css', array(), '4.1.1');
+
+	// Enqueue WOW.js from CDN
+	wp_enqueue_script('wow-js', 'https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js', array(), '1.1.2', true);
+
+	// Initialize WOW.js
+	wp_add_inline_script('wow-js', 'new WOW().init();');
+}
+add_action('wp_enqueue_scripts', 'enqueue_animate_css');

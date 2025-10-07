@@ -17,8 +17,8 @@ $page_id = get_the_ID();
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="page-title">Our Gallery</h1>
-                <p class="page-subtitle">Capturing Beautiful Moments</p>
+                <h1 class="page-title wow animate__animated animate__fadeInDown">Our Gallery</h1>
+                <p class="page-subtitle wow animate__animated animate__fadeInUp">Capturing Beautiful Moments</p>
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@ $page_id = get_the_ID();
                     $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'large');
                 ?>
 
-            <div class="gallery-item">
+            <div class="gallery-item wow animate__animated animate__zoomIn">
                 <div class="gallery-card">
                     <?php if ($thumbnail): ?>
                     <img src="<?php echo esc_url($thumbnail); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
