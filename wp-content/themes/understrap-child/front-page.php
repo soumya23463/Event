@@ -122,6 +122,7 @@ $phone = get_field('phone', $home_id);
 $phone_number_two = get_field('phone_number_two', $home_id);
 $email = get_field('email', $home_id);
 $address = get_field('address', $home_id);
+$business_hours = get_field('business_hours', $home_id);
 $whatsapp_number = get_field('whatsapp_number', $home_id);
 ?>
 
@@ -353,50 +354,60 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
             <p class="section-subtitle-small wow animate__animated animate__fadeInUp">Have questions? We'd love to hear from you!</p>
         </div>
 
-        <div class="row g-4 text-center">
-            <!-- Phone -->
-            <div class="col-md-4">
-                <div class="wow animate__animated animate__fadeInUp">
-                    <div class="icon-box" style="margin: 0 auto 5px;">
-                        <i class="fa fa-phone"></i>
-                    </div>
-                    <h5 style="font-weight: 700; margin-bottom: 5px; font-size: 1.3rem; color: #333;">Phone</h5>
-                    <p style="color: #666; margin: 0; font-size: 1rem;"><a href="tel:+91<?php echo $phone; ?>"
-                            style="color: #666; text-decoration: none; font-weight: 500;">
-                            +91 <?php echo $phone; ?>
-                        </a>
-                        ,<a href="tel:+91<?php echo $phone_number_two; ?>"
-                            style="color: #666; text-decoration: none; font-weight: 500;">
-                            +91 <?php echo $phone_number_two; ?>
-                        </a>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Email -->
-            <div class="col-md-4">
-                <div class="wow animate__animated animate__fadeInUp">
-                    <div class="icon-box" style="margin: 0 auto 5px;">
-                        <i class="fa fa-envelope"></i>
-                    </div>
-                    <h5 style="font-weight: 700; margin-bottom: 5px; font-size: 1.3rem; color: #333;">Email</h5>
-                    <p style="color: #666; margin: 0; font-size: 1rem;"><a href="mailto:<?php echo $email; ?>"
-                            style="color: #666; text-decoration: none; font-weight: 500;"><?php echo $email; ?></a>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Address -->
-            <div class="col-md-4">
-                <div class="wow animate__animated animate__fadeInUp">
-                    <div class="icon-box" style="margin: 0 auto 5px;">
+        <div class="row g-4">
+            <!-- Contact Card 1 - Address -->
+            <?php if ($address): ?>
+            <div class="col-lg-3 col-md-6">
+                <div class="contact-card wow animate__animated animate__fadeInUp">
+                    <div class="contact-card-icon">
                         <i class="fa fa-map-marker"></i>
                     </div>
-                    <h5 style="font-weight: 700; margin-bottom: 5px; font-size: 1.3rem; color: #333;">Address</h5>
-                    <p style="color: #666; margin: 0; font-size: 1rem; font-weight: 500;"><?php echo $address; ?>
+                    <h4>Address</h4>
+                    <p><?php echo nl2br(esc_html($address)); ?></p>
+                </div>
+            </div>
+            <?php endif; ?>
+
+            <!-- Contact Card 2 - Phone -->
+            <?php if ($phone): ?>
+            <div class="col-lg-3 col-md-6">
+                <div class="contact-card wow animate__animated animate__fadeInUp">
+                    <div class="contact-card-icon">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <h4>Phone</h4>
+                    <p><a
+                            href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $phone)); ?>"><?php echo esc_html($phone); ?></a>
                     </p>
                 </div>
             </div>
+            <?php endif; ?>
+
+            <!-- Contact Card 3 - Email -->
+            <?php if ($email): ?>
+            <div class="col-lg-3 col-md-6">
+                <div class="contact-card wow animate__animated animate__fadeInUp">
+                    <div class="contact-card-icon">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <h4>Email</h4>
+                    <p><a href="mailto:<?php echo esc_attr($email); ?>"><?php echo esc_html($email); ?></a></p>
+                </div>
+            </div>
+            <?php endif; ?>
+
+            <!-- Contact Card 4 - Business Hours -->
+            <?php if ($business_hours): ?>
+            <div class="col-lg-3 col-md-6">
+                <div class="contact-card wow animate__animated animate__fadeInUp">
+                    <div class="contact-card-icon">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <h4>Our Hours</h4>
+                    <p><?php echo nl2br(esc_html($business_hours)); ?></p>
+                </div>
+            </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
