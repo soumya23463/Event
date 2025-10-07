@@ -35,7 +35,8 @@ $about_image = get_field('about_image', $page_id);
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="wow animate__animated animate__fadeInRight">
-                    <h2 class="section-title-simple mb-4">Welcome to Krishna Events</h2>
+                    <h2 class="section-title-with-line text-left mb-3">Welcome to Krishna Events</h2>
+                    <p class="section-subtitle-small text-left">Your Trusted Event Partner</p>
                     <p class="know-about-text">
                         <?php
                         if ($about_description) {
@@ -125,7 +126,8 @@ $about_image = get_field('about_image', $page_id);
             </div>
             <div class="col-lg-7">
                 <div class="wow animate__animated animate__fadeInRight">
-                    <h2 class="section-title-simple mb-4">Our Quality Policy</h2>
+                    <h2 class="section-title-with-line text-left mb-3">Our Quality Policy</h2>
+                    <p class="section-subtitle-small text-left">Excellence in Every Detail</p>
                     <p class="about-text">At Krishna Events, quality is not just a promise – it's our foundation. We are
                         committed to:</p>
                     <ul class="quality-list">

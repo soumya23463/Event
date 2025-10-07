@@ -103,7 +103,8 @@ $page_id = get_the_ID();
         <div class="row mt-5">
             <div class="col-12">
                 <div class="social-section text-center wow animate__animated animate__fadeInUp">
-                    <h3 class="mb-4">Connect With Us</h3>
+                    <h3 class="section-title-with-line mb-3">Connect With Us</h3>
+                    <p class="section-subtitle-small">Follow us on social media</p>
                     <div class="social-links-wrapper">
                         <?php if ($facebook_url): ?>
                         <a href="<?php echo esc_url($facebook_url); ?>" target="_blank"

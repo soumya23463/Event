@@ -133,8 +133,8 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="wow animate__animated animate__fadeInRight">
-                    <h2 class="section-title-simple mb-4"><?php echo $about_title; ?></h2>
-                    <p class="know-about-text"><?php echo $about_description; ?></p>
+                    <h2 class="section-title-with-line text-left mb-3"><?php echo $about_title; ?></h2>
+                    <p class="section-subtitle-small text-left"><?php echo $about_description; ?></p>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -154,8 +154,8 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="services-overview" class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title-simple wow animate__animated animate__fadeInUp">Our Services</h2>
-            <p class="lead wow animate__animated animate__fadeInUp">Complete Event Management Solutions</p>
+            <h2 class="section-title-with-line wow animate__animated animate__fadeInUp">Our Services</h2>
+            <p class="section-subtitle-small wow animate__animated animate__fadeInUp">Complete Event Management Solutions</p>
         </div>
         <div class="row g-4">
             <?php
@@ -213,8 +213,8 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="why-choose-us" class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title-simple wow animate__animated animate__fadeInUp">Why Choose Krishna Events?</h2>
-            <p class="lead wow animate__animated animate__fadeInUp">What Makes Us Different</p>
+            <h2 class="section-title-with-line wow animate__animated animate__fadeInUp">Why Choose Krishna Events?</h2>
+            <p class="section-subtitle-small wow animate__animated animate__fadeInUp">What Makes Us Different</p>
         </div>
         <div class="row g-4">
             <div class="col-md-6 col-lg-3">
@@ -261,28 +261,61 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 
 
 <!-- Gallery Section -->
-<section id="gallery" class="py-5 bg-white">
+<section id="gallery-grid" class="py-5 bg-white">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title-simple wow animate__animated animate__fadeInUp">Photo Gallery</h2>
+            <h2 class="section-title-with-line wow animate__animated animate__fadeInUp">Photo Gallery</h2>
+            <p class="section-subtitle-small wow animate__animated animate__fadeInUp">Moments We've Captured</p>
         </div>
 
-        <div class="row g-3">
-            <?php
-            $gallery_items = get_posts(array('post_type' => 'gallery', 'numberposts' => 6));
+        <?php
+        $gallery_args = array(
+            'post_type' => 'gallery',
+            'posts_per_page' => 6,
+            'orderby' => 'date',
+            'order' => 'DESC'
+        );
 
-            foreach ($gallery_items as $item) :
-                $gallery_image = get_the_post_thumbnail_url($item->ID, 'large');
-                if ($gallery_image) : ?>
-            <div class="col-md-4 col-sm-6">
-                <div class="gallery-item wow animate__animated animate__zoomIn">
-                    <img src="<?php echo esc_url($gallery_image); ?>" alt="<?php echo esc_attr($item->post_title); ?>"
-                        class="img-fluid">
+        $gallery_query = new WP_Query($gallery_args);
+
+        if ($gallery_query->have_posts()) :
+        ?>
+
+        <div class="gallery-grid">
+            <?php while ($gallery_query->have_posts()) : $gallery_query->the_post();
+                $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'large');
+            ?>
+
+            <div class="gallery-item wow animate__animated animate__zoomIn">
+                <div class="gallery-card">
+                    <?php if ($thumbnail): ?>
+                    <img src="<?php echo esc_url($thumbnail); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
+                        class="gallery-image">
+                    <?php else: ?>
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&h=400&fit=crop"
+                        alt="<?php echo esc_attr(get_the_title()); ?>" class="gallery-image">
+                    <?php endif; ?>
+
+                    <div class="gallery-overlay">
+                        <h4><?php the_title(); ?></h4>
+                        <a href="<?php echo esc_url($thumbnail); ?>" class="gallery-zoom" data-fancybox="gallery"
+                            data-caption="<?php echo esc_attr(get_the_title()); ?>">
+                            <i class="fa fa-search-plus"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <?php endif;
-            endforeach; ?>
+
+            <?php endwhile; ?>
         </div>
+
+        <?php else: ?>
+        <div class="text-center py-5">
+            <p class="lead">No gallery items found.</p>
+        </div>
+        <?php endif;
+        wp_reset_postdata();
+        ?>
     </div>
 </section>
 
@@ -290,8 +323,8 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="testimonials" class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title underline wow animate__animated animate__fadeInUp">What Our Customers Say</h2>
-            <p class="lead wow animate__animated animate__fadeInUp">Read testimonials from our happy customers</p>
+            <h2 class="section-title-with-line wow animate__animated animate__fadeInUp">What Our Customers Say</h2>
+            <p class="section-subtitle-small wow animate__animated animate__fadeInUp">Read testimonials from our happy customers</p>
         </div>
 
         <div class="row g-4">
@@ -316,8 +349,8 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="contact-section" class="contact-section py-5">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title underline wow animate__animated animate__fadeInUp">Get In Touch</h2>
-            <p class="lead wow animate__animated animate__fadeInUp">Have questions? We'd love to hear from you!</p>
+            <h2 class="section-title-with-line wow animate__animated animate__fadeInUp">Get In Touch</h2>
+            <p class="section-subtitle-small wow animate__animated animate__fadeInUp">Have questions? We'd love to hear from you!</p>
         </div>
 
         <div class="row g-4 text-center">
