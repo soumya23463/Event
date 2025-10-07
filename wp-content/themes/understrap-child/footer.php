@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying the footer
  *
@@ -18,21 +19,50 @@ defined('ABSPATH') || exit;
             <!-- Company Info -->
             <div class="col-lg-4 col-md-6">
                 <div class="footer-widget">
-                    <h4>Krishna Events</h4>
-                    <p>Your premier destination wedding and event planning partner. Creating unforgettable moments across India with passion and perfection.</p>
+                    <h4><?php bloginfo('name'); ?></h4>
+                    <p><?php
+                        // Get the homepage ID
+                        $home_id = get_option('page_on_front');
+
+                        // Get the about description from homepage custom field
+                        $about_description = get_field('about_description', $home_id);
+
+                        if ($about_description) {
+                            // Show the custom field content (limit to first 500 characters)
+                            $about_text = wp_strip_all_tags($about_description);
+                            if (strlen($about_text) > 500) {
+                                echo esc_html(substr($about_text, 0, 200)) . '...';
+                            } else {
+                                echo esc_html($about_text);
+                            }
+                        } else {
+                            echo 'Your premier destination wedding and event planning partner. Creating unforgettable moments across India with passion and perfection.';
+                        }
+                        ?></p>
                     <div class="mt-3">
-                        <a href="https://www.facebook.com/krishnaeventss" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <?php
+                        // Get social media links from homepage custom fields
+                        $facebook_url = get_field('facebook', $home_id);
+                        $instagram_url = get_field('instagram', $home_id);
+                        $youtube_url = get_field('youtube', $home_id);
+                        ?>
+
+
+                        <a href="<?php echo esc_url($facebook_url); ?>" class="social-icon" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook">
                             <i class="fa fa-facebook"></i>
                         </a>
-                        <a href="https://www.instagram.com/krishnaeventss" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+
+                        <a href="<?php echo esc_url($instagram_url); ?>" class="social-icon" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram">
                             <i class="fa fa-instagram"></i>
                         </a>
-                        <a href="https://twitter.com/krishnaeventss" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                        <a href="https://www.youtube.com/@krishnaeventss" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+
+                        <a href="<?php echo esc_url($youtube_url); ?>" class="social-icon" target="_blank"
+                            rel="noopener noreferrer" aria-label="YouTube">
                             <i class="fa fa-youtube"></i>
                         </a>
+
                     </div>
                 </div>
             </div>
@@ -42,10 +72,17 @@ defined('ABSPATH') || exit;
                 <div class="footer-widget">
                     <h4>Quick Links</h4>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="<?php echo home_url('/'); ?>">Home</a></li>
-                        <li class="mb-2"><a href="<?php echo home_url('/about'); ?>">About Us</a></li>
-                        <li class="mb-2"><a href="<?php echo home_url('/gallery'); ?>">Gallery</a></li>
-                        <li class="mb-2"><a href="<?php echo home_url('/contact'); ?>">Contact</a></li>
+                        <?php
+                        // Use the same primary menu as navbar
+                        wp_nav_menu(array(
+                            'theme_location' => 'primary',
+                            'container' => false,
+                            'menu_class' => '',
+                            'items_wrap' => '%3$s',
+                            'depth' => 1,
+                            'fallback_cb' => '__return_false'
+                        ));
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -55,11 +92,26 @@ defined('ABSPATH') || exit;
                 <div class="footer-widget">
                     <h4>Our Services</h4>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#">Destination Weddings</a></li>
-                        <li class="mb-2"><a href="#">Photography & Video</a></li>
-                        <li class="mb-2"><a href="#">Catering Services</a></li>
-                        <li class="mb-2"><a href="#">Event Decoration</a></li>
-                        <li class="mb-2"><a href="#">Event Planning</a></li>
+                        <?php
+                        // Get services from custom post type (limit to 6)
+                        $services = get_posts(array(
+                            'post_type' => 'service',
+                            'numberposts' => 6,
+                            'orderby' => 'menu_order',
+                            'order' => 'ASC'
+                        ));
+
+                        if ($services) :
+                            foreach ($services as $service) : ?>
+                        <li class="mb-2">
+                            <a href="<?php echo get_permalink($service->ID); ?>">
+                                <?php echo esc_html($service->post_title); ?>
+                            </a>
+                        </li>
+                        <?php endforeach;
+                        else : ?>
+                        <li>No services found.</li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
@@ -69,19 +121,37 @@ defined('ABSPATH') || exit;
                 <div class="footer-widget">
                     <h4>Contact Us</h4>
                     <ul class="list-unstyled">
+                        <?php
+                        // Get the homepage ID
+                        $home_id = get_option('page_on_front');
+
+                        // Get contact info from homepage custom fields
+                        $phone = get_field('phone', $home_id);
+                        $email = get_field('email', $home_id);
+                        $address = get_field('address', $home_id);
+                        ?>
+
+                        <?php if ($phone): ?>
                         <li class="mb-2">
                             <i class="fa fa-phone me-2"></i>
-                            <a href="tel:+919876543210">+91 98765 43210</a>
+                            <a
+                                href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $phone)); ?>"><?php echo esc_html($phone); ?></a>
                         </li>
+                        <?php endif; ?>
+
+                        <?php if ($email): ?>
                         <li class="mb-2">
                             <i class="fa fa-envelope me-2"></i>
-                            <a href="mailto:info@krishnaeventss.com">info@krishnaeventss.com</a>
+                            <a href="mailto:<?php echo esc_attr($email); ?>"><?php echo esc_html($email); ?></a>
                         </li>
+                        <?php endif; ?>
+
+                        <?php if ($address): ?>
                         <li class="mb-2">
                             <i class="fa fa-map-marker me-2"></i>
-                            123 Event Street, City Name,<br>
-                            <span class="ms-4">State - 123456, India</span>
+                            <?php echo nl2br(esc_html($address)); ?>
                         </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
@@ -91,12 +161,12 @@ defined('ABSPATH') || exit;
         <div class="row mt-4 pt-4 border-top border-secondary">
             <div class="col-md-6 text-center text-md-start">
                 <p class="mb-0" style="color: rgba(255, 255, 255, 0.7);">
-                    &copy; <?php echo date('Y'); ?> Krishna Events. All Rights Reserved.
+                    &copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. All Rights Reserved.
                 </p>
             </div>
             <div class="col-md-6 text-center text-md-end">
                 <p class="mb-0" style="color: rgba(255, 255, 255, 0.7);">
-                    Designed with <i class="fa fa-heart" style="color: #c79c6c;"></i> for Perfect Events
+                    Designed By <span style="color: #c79c6c;">Er. Soumya Kesarwani</span> for Perfect Events
                 </p>
             </div>
         </div>
@@ -108,4 +178,5 @@ defined('ABSPATH') || exit;
 </div><!-- #page -->
 
 </body>
+
 </html>
