@@ -1,0 +1,378 @@
+/**
+ * Swiper Slider - Krishna Events Split Screen Style
+ * Force 50-50 split screen layout with image left and text right
+ */
+
+/* Remove ALL Bootstrap spacing from page wrapper */
+#page {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#wrapper-static {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Container - Remove ALL spacing */
+.hero-swiper-section {
+    position: relative;
+    overflow: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.next-container-center {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Swiper Main Container - Full Viewport Height */
+.swiper,
+.swiper-container {
+    width: 100% !important;
+    height: 100vh !important;
+    min-height: 600px !important;
+    max-height: 800px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Individual Slide - Full Height */
+.swiper-slide {
+    height: 100vh !important;
+    min-height: 600px !important;
+    max-height: 800px !important;
+    display: flex !important;
+    align-items: stretch !important;
+}
+
+/* Split-Screen Container - CRITICAL */
+.swiper-slide-block {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    height: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Left Side - Image (50%) */
+.swiper-slide-block-img {
+    flex: 0 0 50% !important;
+    width: 50% !important;
+    max-width: 50% !important;
+    height: 100% !important;
+    overflow: hidden;
+    position: relative;
+}
+
+.swiper-slide-block-img a,
+.swiper-slide-block-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Right Side - Text Content (50%) */
+.swiper-slide-block-text {
+    flex: 0 0 50% !important;
+    width: 50% !important;
+    max-width: 50% !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 80px !important;
+    background: #f8f8f8 !important;
+}
+
+/* Text Styling */
+.next-main-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: #2c2c2c;
+}
+
+.next-main-title a {
+    color: #2c2c2c;
+    text-decoration: none;
+}
+
+.next-main-title a:hover {
+    color: #c79c6c;
+}
+
+.next-main-subtitle {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #666;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.next-paragraph {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+}
+
+.next-link {
+    display: inline-block;
+    padding: 15px 40px;
+    background: #2c2c2c;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: background 0.3s ease;
+}
+
+.next-link:hover {
+    background: #c79c6c;
+    color: #fff;
+}
+
+.next-number {
+    position: absolute;
+    bottom: 40px;
+    right: 60px;
+    font-size: 8rem;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.05);
+}
+
+/* Navigation Arrows */
+.swiper-button-next,
+.swiper-button-prev {
+    width: 50px;
+    height: 50px;
+    background: rgba(44, 44, 44, 0.8) !important;
+    color: #fff !important;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background: rgba(199, 156, 108, 0.9) !important;
+}
+
+/* Remove Font Awesome icons from navigation */
+.swiper-button-next i,
+.swiper-button-prev i {
+    display: none !important;
+}
+
+/* Responsive - Stack on Mobile */
+@media (max-width: 991px) {
+    .swiper,
+    .swiper-container {
+        min-height: 700px !important;
+        max-height: none !important;
+    }
+
+    .swiper-slide {
+        min-height: 700px !important;
+        max-height: none !important;
+    }
+
+    .swiper-slide-block {
+        flex-direction: column !important;
+        min-height: 700px;
+    }
+
+    .swiper-slide-block-img,
+    .swiper-slide-block-text {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .swiper-slide-block-img {
+        height: 350px !important;
+        min-height: 350px;
+    }
+
+    .swiper-slide-block-text {
+        height: auto !important;
+        min-height: 350px;
+        padding: 40px !important;
+    }
+
+    .next-main-title {
+        font-size: 2.5rem;
+    }
+
+    .next-paragraph {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .next-number {
+        font-size: 5rem;
+        bottom: 20px;
+        right: 30px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 45px;
+        height: 45px;
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 767px) {
+    .swiper,
+    .swiper-container {
+        min-height: 500px !important;
+        max-height: 600px !important;
+    }
+
+    .swiper-slide {
+        min-height: 500px !important;
+        max-height: 600px !important;
+    }
+
+    .swiper-slide-block {
+        min-height: 500px;
+    }
+
+    .swiper-slide-block-img {
+        height: 100% !important;
+        min-height: 500px;
+        flex: 1 !important;
+    }
+
+    .swiper-slide-block-text {
+        display: none !important;
+    }
+
+    .next-main-title {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .next-main-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 1.2rem;
+        letter-spacing: 1px;
+    }
+
+    .next-paragraph {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .next-link {
+        padding: 12px 30px;
+        font-size: 0.9rem;
+    }
+
+    .next-number {
+        font-size: 3.5rem;
+        bottom: 15px;
+        right: 20px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 40px;
+        height: 40px;
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 575px) {
+    .swiper,
+    .swiper-container {
+        min-height: 400px !important;
+        max-height: 500px !important;
+    }
+
+    .swiper-slide {
+        min-height: 400px !important;
+        max-height: 500px !important;
+    }
+
+    .swiper-slide-block {
+        min-height: 400px;
+    }
+
+    .swiper-slide-block-img {
+        height: 100% !important;
+        min-height: 400px;
+        flex: 1 !important;
+    }
+
+    .swiper-slide-block-text {
+        display: none !important;
+    }
+
+    .next-main-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .next-main-subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .next-paragraph {
+        font-size: 0.85rem;
+        margin-bottom: 1.2rem;
+        line-height: 1.6;
+    }
+
+    .next-link {
+        padding: 10px 25px;
+        font-size: 0.85rem;
+    }
+
+    .next-number {
+        font-size: 3rem;
+        bottom: 10px;
+        right: 15px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 35px;
+        height: 35px;
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,382 @@
+/*
+ * Custom Slider Styles - Direct CSS (No SCSS Compilation Needed)
+ * Edit this file directly for slider changes
+ * File: wp-content/themes/understrap-child/css/slider-custom.css
+ */
+
+/* Hero Slider Section - Split Layout (Image Left 66%, Text Right 33%) */
+.hero-slider-section {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero-slider-section .carousel {
+    width: 100%;
+}
+
+.hero-slider-section .carousel .carousel-inner .carousel-item {
+    position: relative;
+    height: 400px; /* Reduced from 500px */
+    padding: 30px;
+}
+
+@media (min-width: 768px) {
+    .hero-slider-section .carousel .carousel-inner .carousel-item {
+        height: 450px; /* Reduced from 600px */
+        padding: 40px; /* Reduced from 50px */
+    }
+}
+
+@media (min-width: 992px) {
+    .hero-slider-section .carousel .carousel-inner .carousel-item {
+        height: 500px; /* Reduced from 700px */
+        padding: 50px; /* Reduced from 60px */
+    }
+}
+
+@media (min-width: 1200px) {
+    .hero-slider-section .carousel .carousel-inner .carousel-item {
+        height: 550px; /* Reduced from 750px */
+        padding: 50px; /* Reduced from 70px */
+    }
+}
+
+@media (min-width: 1400px) {
+    .hero-slider-section .carousel .carousel-inner .carousel-item {
+        height: 600px; /* Reduced from 800px */
+        padding: 60px; /* Reduced from 80px */
+    }
+}
+
+.hero-slider-section .carousel .carousel-inner .carousel-item .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.hero-slider-section .carousel .carousel-inner .carousel-item .row {
+    height: 100%;
+    margin: 0;
+}
+
+/* Left Side - Image Column (8 cols = 66.67%) */
+.hero-slider-section .slider-image-col {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: flex-start; /* Top align */
+}
+
+.hero-slider-section .slider-image-col .slider-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 70%; /* Image box height - change this value (50%, 70%, 80%, 90%, 100%) */
+    overflow: hidden;
+    border-radius: 0 !important; /* No rounded corners - force override */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.hero-slider-section .slider-image-col .slider-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+
+/* Zoom effect on hover */
+.hero-slider-section .slider-image-col .slider-image-wrapper:hover img {
+    transform: scale(1.05);
+}
+
+/* Right Side - Content Column (4 cols = 33.33%) */
+.hero-slider-section .slider-content-col {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: flex-start; /* Top align instead of center */
+}
+
+.hero-slider-section .slider-content-col .slider-content-wrapper {
+    width: 100%;
+    height: 70%; /* Content box height - change this value (50%, 70%, 80%, 90%, 100%) */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* Alternative gradients - uncomment to use:
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    background: linear-gradient(135deg, #141e30 0%, #243b55 100%);
+    */
+    border-radius: 0 !important; /* No rounded corners - force override */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+@media (min-width: 768px) {
+    .hero-slider-section .slider-content-col .slider-content-wrapper {
+        padding: 3rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .hero-slider-section .slider-content-col .slider-content-wrapper {
+        padding: 4rem 3rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .hero-slider-section .slider-content-col .slider-content-wrapper {
+        padding: 4rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .hero-slider-section .slider-content-col .slider-content-wrapper {
+        padding: 5rem;
+    }
+}
+
+.hero-slider-section .slider-content {
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Title Styling - Reduced Size */
+.hero-slider-section .slider-title {
+    font-size: 1.25rem !important; /* Reduced from 1.75rem */
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+}
+
+@media (min-width: 576px) {
+    .hero-slider-section .slider-title {
+        font-size: 1.5rem; /* Reduced from 2rem */
+    }
+}
+
+@media (min-width: 768px) {
+    .hero-slider-section .slider-title {
+        font-size: 1.75rem; /* Reduced from 2.5rem */
+        margin-bottom: 1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .hero-slider-section .slider-title {
+        font-size: 2rem; /* Reduced from 3rem */
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .hero-slider-section .slider-title {
+        font-size: 2.25rem; /* Reduced from 3.5rem */
+        margin-bottom: 1.75rem;
+    }
+}
+
+/* Subtitle/Description Styling */
+.hero-slider-section .slider-subtitle {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+@media (min-width: 576px) {
+    .hero-slider-section .slider-subtitle {
+        font-size: 1.05rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .hero-slider-section .slider-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .hero-slider-section .slider-subtitle {
+        font-size: 1.15rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .hero-slider-section .slider-subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* Button Styling */
+.hero-slider-section .slider-btn {
+    display: inline-block;
+    padding: 0.875rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+    color: #667eea;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+@media (min-width: 768px) {
+    .hero-slider-section .slider-btn {
+        padding: 1rem 3rem;
+        font-size: 1.05rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .hero-slider-section .slider-btn {
+        padding: 1.125rem 3.5rem;
+        font-size: 1.1rem;
+    }
+}
+
+.hero-slider-section .slider-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #667eea;
+}
+
+.hero-slider-section .slider-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Mobile: Stack image on top, content on bottom */
+@media (max-width: 991.98px) {
+    .hero-slider-section .carousel .carousel-inner .carousel-item {
+        height: auto;
+        min-height: 600px;
+    }
+
+    .hero-slider-section .carousel .carousel-inner .carousel-item .row {
+        flex-direction: column;
+    }
+
+    .hero-slider-section .slider-image-col {
+        height: 300px;
+        order: 1;
+    }
+
+    @media (min-width: 576px) {
+        .hero-slider-section .slider-image-col {
+            height: 350px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .hero-slider-section .slider-image-col {
+            height: 400px;
+        }
+    }
+
+    .hero-slider-section .slider-content-col {
+        min-height: 300px;
+        order: 2;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* Hide Previous Button - Only Next Button Visible */
+.hero-slider-section .carousel-control-prev {
+    display: none !important;
+}
+
+/* Next Button - Top Right Corner of Content Column */
+.hero-slider-section .carousel-control-next {
+    width: 45px;
+    height: 45px;
+    opacity: 1;
+    transition: all 0.3s ease;
+    z-index: 100;
+    background-color: #ffffff;
+    left: auto;
+    right: 100px !important; /* Fixed position from right */
+    top: 120px !important; /* Fixed position from top */
+    bottom: auto;
+    transform: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+    .hero-slider-section .carousel-control-next {
+        width: 50px;
+        height: 50px;
+        right: 100px;
+        top: 120px;
+    }
+}
+
+@media (min-width: 992px) {
+    .hero-slider-section .carousel-control-next {
+        width: 55px;
+        height: 55px;
+        right: 100px;
+        top: 120px;
+    }
+}
+
+/* Hide on mobile */
+@media (max-width: 991.98px) {
+    .hero-slider-section .carousel-control-next {
+        display: none;
+    }
+}
+
+/* Hover effect removed - button stays same on hover */
+
+.hero-slider-section .carousel-control-next-icon {
+    width: 18px;
+    height: 18px;
+    background-size: 100%;
+    filter: invert(1) brightness(0); /* Black arrow */
+}
+
+@media (min-width: 992px) {
+    .hero-slider-section .carousel-control-next-icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Carousel Indicators - Hide them */
+.hero-slider-section .carousel-indicators {
+    display: none; /* Remove dots/indicators */
+}
+
+/* Contact Section Spacing */
+.contact-section {
+    padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+    .contact-section {
+        padding: 5rem 0;
+    }
+}
+
+@media (min-width: 1200px) {
+    .contact-section {
+        padding: 6rem 0;
+    }
+}

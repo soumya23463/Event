@@ -1,0 +1,335 @@
+// Hero Slider Styles - Split Layout (Image Left, Text Right)
+.hero-slider-section {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    .carousel {
+        width: 100%;
+
+        .carousel-inner {
+            .carousel-item {
+                position: relative;
+                height: 500px;
+                padding: 30px;
+
+                @media (min-width: 768px) {
+                    height: 600px;
+                    padding: 50px;
+                }
+
+                @media (min-width: 992px) {
+                    height: 700px;
+                    padding: 60px;
+                }
+
+                @media (min-width: 1200px) {
+                    height: 750px;
+                    padding: 70px;
+                }
+
+                @media (min-width: 1400px) {
+                    height: 800px;
+                    padding: 80px;
+                }
+
+                .container-fluid {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+
+                .row {
+                    height: 100%;
+                    margin: 0;
+                }
+
+                // Left Side - Image Column
+                .slider-image-col {
+                    position: relative;
+                    height: 100%;
+
+                    .slider-image-wrapper {
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        overflow: hidden;
+                        border-radius: 20px;
+                        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            object-position: center;
+                            transition: transform 0.5s ease;
+                        }
+
+                        // Slight zoom effect on hover
+                        &:hover img {
+                            transform: scale(1.05);
+                        }
+                    }
+                }
+
+                // Right Side - Content Column
+                .slider-content-col {
+                    position: relative;
+                    height: 100%;
+
+                    .slider-content-wrapper {
+                        width: 100%;
+                        height: 100%;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        border-radius: 20px;
+                        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 2rem;
+
+                        // Alternative gradient options (uncomment to use):
+                        // background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+                        // background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+                        // background: linear-gradient(135deg, #141e30 0%, #243b55 100%);
+
+                        @media (min-width: 768px) {
+                            padding: 3rem;
+                        }
+
+                        @media (min-width: 992px) {
+                            padding: 4rem 3rem;
+                        }
+
+                        @media (min-width: 1200px) {
+                            padding: 4rem;
+                        }
+
+                        @media (min-width: 1400px) {
+                            padding: 5rem;
+                        }
+
+                        .slider-content {
+                            max-width: 600px;
+                            width: 100%;
+
+                            // Title styling
+                            .slider-title {
+                                font-size: 1.75rem;
+                                font-weight: 700;
+                                color: #ffffff;
+                                margin-bottom: 1.25rem;
+                                line-height: 1.2;
+                                letter-spacing: 0.5px;
+
+                                @media (min-width: 576px) {
+                                    font-size: 2rem;
+                                }
+
+                                @media (min-width: 768px) {
+                                    font-size: 2.5rem;
+                                    margin-bottom: 1.5rem;
+                                }
+
+                                @media (min-width: 992px) {
+                                    font-size: 3rem;
+                                    margin-bottom: 2rem;
+                                }
+
+                                @media (min-width: 1400px) {
+                                    font-size: 3.5rem;
+                                    margin-bottom: 2.5rem;
+                                }
+                            }
+
+                            // Subtitle/Description styling
+                            .slider-subtitle {
+                                font-size: 1rem;
+                                color: rgba(255, 255, 255, 0.95);
+                                margin-bottom: 2rem;
+                                line-height: 1.7;
+                                font-weight: 400;
+
+                                @media (min-width: 576px) {
+                                    font-size: 1.05rem;
+                                }
+
+                                @media (min-width: 768px) {
+                                    font-size: 1.1rem;
+                                    margin-bottom: 2.5rem;
+                                }
+
+                                @media (min-width: 992px) {
+                                    font-size: 1.15rem;
+                                    margin-bottom: 2.5rem;
+                                }
+
+                                @media (min-width: 1400px) {
+                                    font-size: 1.25rem;
+                                }
+                            }
+
+                            // Button styling
+                            .slider-btn {
+                                display: inline-block;
+                                padding: 0.875rem 2.5rem;
+                                font-size: 1rem;
+                                font-weight: 600;
+                                border-radius: 50px;
+                                transition: all 0.3s ease;
+                                background-color: #ffffff;
+                                border: 2px solid #ffffff;
+                                color: #667eea;
+                                text-transform: uppercase;
+                                letter-spacing: 1px;
+                                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                                text-decoration: none;
+
+                                @media (min-width: 768px) {
+                                    padding: 1rem 3rem;
+                                    font-size: 1.05rem;
+                                }
+
+                                @media (min-width: 1400px) {
+                                    padding: 1.125rem 3.5rem;
+                                    font-size: 1.1rem;
+                                }
+
+                                &:hover {
+                                    transform: translateY(-3px);
+                                    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+                                    background-color: rgba(255, 255, 255, 0.95);
+                                    color: #667eea;
+                                }
+
+                                &:active {
+                                    transform: translateY(-1px);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Mobile: Stack image on top, content on bottom
+                @media (max-width: 991.98px) {
+                    height: auto;
+                    min-height: 600px;
+
+                    .row {
+                        flex-direction: column;
+                    }
+
+                    .slider-image-col {
+                        height: 300px;
+                        order: 1;
+
+                        @media (min-width: 576px) {
+                            height: 350px;
+                        }
+
+                        @media (min-width: 768px) {
+                            height: 400px;
+                        }
+                    }
+
+                    .slider-content-col {
+                        min-height: 300px;
+                        order: 2;
+                        display: flex;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+
+        // Navigation arrows styling
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 50px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.3);
+            height: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 5px;
+
+            @media (max-width: 991.98px) {
+                display: none;
+            }
+
+            &:hover {
+                opacity: 1;
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+
+            .carousel-control-prev-icon,
+            .carousel-control-next-icon {
+                width: 30px;
+                height: 30px;
+                background-size: 100%;
+            }
+        }
+
+        .carousel-control-prev {
+            left: 20px;
+        }
+
+        .carousel-control-next {
+            right: 20px;
+        }
+
+        // Indicators styling
+        .carousel-indicators {
+            bottom: 20px;
+            margin-bottom: 0;
+            z-index: 10;
+
+            @media (min-width: 992px) {
+                bottom: 30px;
+            }
+
+            button {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                margin: 0 6px;
+                opacity: 0.6;
+                background-color: #ffffff;
+                border: 0;
+                transition: all 0.3s ease;
+
+                @media (min-width: 768px) {
+                    width: 14px;
+                    height: 14px;
+                    margin: 0 8px;
+                }
+
+                &.active {
+                    opacity: 1;
+                    transform: scale(1.2);
+                    background-color: #ffffff;
+                }
+
+                &:hover {
+                    opacity: 0.9;
+                }
+            }
+        }
+    }
+}
+
+// Contact Section spacing
+.contact-section {
+    padding: 4rem 0;
+
+    @media (min-width: 768px) {
+        padding: 5rem 0;
+    }
+
+    @media (min-width: 1200px) {
+        padding: 6rem 0;
+    }
+}
