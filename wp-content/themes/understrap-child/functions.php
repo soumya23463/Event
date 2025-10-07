@@ -304,7 +304,8 @@ add_action('init', 'my_register_gallery_cpt');
 /**
  * Register Testimonials Custom Post Type
  */
-function my_register_testimonials_cpt() {
+function my_register_testimonials_cpt()
+{
 	$labels = array(
 		'name'               => 'Testimonials',
 		'singular_name'      => 'Testimonial',
@@ -331,3 +332,36 @@ function my_register_testimonials_cpt() {
 	register_post_type('testimonial', $args);
 }
 add_action('init', 'my_register_testimonials_cpt');
+
+
+/**
+ * Register Video Gallery Custom Post Type
+ */
+function my_register_video_gallery_cpt()
+{
+	$labels = array(
+		'name'               => 'Video Gallery',
+		'singular_name'      => 'Video',
+		'add_new'            => 'Add New Video',
+		'add_new_item'       => 'Add New Video',
+		'edit_item'          => 'Edit Video',
+		'new_item'           => 'New Video',
+		'view_item'          => 'View Video',
+		'search_items'       => 'Search Videos',
+		'not_found'          => 'No videos found',
+		'not_found_in_trash' => 'No videos found in Trash',
+	);
+
+	$args = array(
+		'labels'             => $labels,
+		'public'             => true,
+		'has_archive'        => false,
+		'rewrite'            => array('slug' => 'videos'),
+		'supports'           => array('title', 'thumbnail'),
+		'menu_icon'          => 'dashicons-video-alt3',
+		'show_in_rest'       => true,
+	);
+
+	register_post_type('video_gallery', $args);
+}
+add_action('init', 'my_register_video_gallery_cpt');
