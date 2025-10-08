@@ -55,9 +55,9 @@ get_header(); ?>
                                 <a
                                     href="<?php echo esc_url($slide_button_link); ?>"><?php echo esc_html($slide_title); ?></a>
                             </h2>
-                            <h3 class="next-main-subtitle"><?php echo esc_html($slide_subtitle); ?></h3>
+                            <h3 class="next-main-subtitle"><?php echo wp_trim_words($slide_subtitle, 5); ?></h3>
                             <?php if ($slide_description) : ?>
-                            <p class="next-paragraph"><?php echo wp_trim_words($slide_description, 15); ?></p>
+                            <p class="next-paragraph"><?php echo wp_trim_words($slide_description, 25); ?></p>
                             <?php endif; ?>
                             <a class="next-link"
                                 href="<?php echo esc_url($slide_button_link); ?>"><?php echo esc_html($slide_button_text); ?></a>
