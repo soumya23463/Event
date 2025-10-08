@@ -552,15 +552,67 @@
    Stats Section
    ======================================== */
 #stats {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, #c79c6c, #b8875a);
     position: relative;
+    padding: 80px 0 !important;
+    overflow: hidden;
+}
+
+#stats::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(0,0,0,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,144C960,149,1056,139,1152,122.7C1248,107,1344,85,1392,74.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+    background-size: cover;
+    background-position: bottom;
+    opacity: 0.3;
+}
+
+#stats .col-md-3 {
+    margin-bottom: 2rem;
+}
+
+#stats .wow {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+#stats .wow:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
 #stats .counter {
-    font-size: 3rem !important;
-    font-weight: 700 !important;
+    font-size: 3.5rem !important;
+    font-weight: 800 !important;
     color: #fff;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+    line-height: 1;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#stats .counter::before {
+    content: '+';
+    font-size: 2.5rem;
+    margin-right: 5px;
+    opacity: 0.9;
+}
+
+#stats p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 
@@ -1122,12 +1174,20 @@ footer a:hover {
     }
 
     /* Stats Counter */
+    #stats {
+        padding: 60px 0 !important;
+    }
+
+    #stats .wow {
+        padding: 35px 15px;
+    }
+
     #stats .counter {
-        font-size: 2.5rem !important;
+        font-size: 2.8rem !important;
     }
 
     #stats p {
-        font-size: 0.95rem !important;
+        font-size: 1rem !important;
     }
 }
 
@@ -1210,12 +1270,21 @@ footer a:hover {
 
 
     /* Stats Counter */
+    #stats {
+        padding: 50px 0 !important;
+    }
+
+    #stats .wow {
+        padding: 30px 15px;
+        margin-bottom: 1rem;
+    }
+
     #stats .counter {
-        font-size: 2rem !important;
+        font-size: 2.2rem !important;
     }
 
     #stats p {
-        font-size: 0.85rem !important;
+        font-size: 0.9rem !important;
     }
 
     /* Navbar */
