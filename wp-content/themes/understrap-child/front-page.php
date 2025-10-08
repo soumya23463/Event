@@ -110,13 +110,13 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4 mb-lg-0">
-                <div class="wow animate__animated animate__fadeInRight">
-                    <h2 class="section-title-with-line text-left mb-3"><?php echo $about_title; ?></h2>
-                    <p class="section-subtitle-small text-left"><?php echo $about_description; ?></p>
+                <div class="wow animate__animated animate__fadeInLeft" data-wow-duration="1s">
+                    <h2 class="section-title-with-line text-left mb-3 wow animate__animated animate__fadeInUp" data-wow-delay="0.2s"><?php echo $about_title; ?></h2>
+                    <p class="section-subtitle-small text-left wow animate__animated animate__fadeInUp" data-wow-delay="0.4s"><?php echo $about_description; ?></p>
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="wow animate__animated animate__fadeInLeft">
+                <div class="wow animate__animated animate__zoomIn" data-wow-duration="1s" data-wow-delay="0.3s">
                     <?php if ($about_image): ?>
                     <img src="<?php echo esc_url($about_image['url']); ?>"
                         alt="<?php echo esc_attr($about_image['alt']); ?>" class="img-fluid about-image shadow">
@@ -132,17 +132,19 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="services-overview" class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title-with-line wow animate__animated animate__fadeInUp">Our Services</h2>
-            <p class="section-subtitle-small wow animate__animated animate__fadeInUp">Complete Event Management
+            <h2 class="section-title-with-line wow animate__animated animate__fadeInDown" data-wow-duration="0.8s">Our Services</h2>
+            <p class="section-subtitle-small wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">Complete Event Management
                 Solutions</p>
         </div>
         <div class="row g-4">
             <?php
             $services = get_posts(array('post_type' => 'service', 'numberposts' => -1));
 
-            foreach ($services as $index => $service) : ?>
+            foreach ($services as $index => $service) :
+                $delay = 0.1 * ($index % 3); // Stagger animation by column
+            ?>
             <div class="col-md-4">
-                <div class="service-list-card wow animate__animated animate__fadeInUp">
+                <div class="service-list-card wow animate__animated animate__flipInX" data-wow-delay="<?php echo $delay; ?>s" data-wow-duration="0.8s">
                     <i class="fa fa-check-circle"></i>
                     <h5><?php echo $service->post_title; ?></h5>
                 </div>
@@ -157,28 +159,28 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
     <div class="container">
         <div class="row text-center">
             <div class="col-md-3 col-6 mb-4">
-                <div class="wow animate__animated animate__fadeRight">
+                <div class="wow animate__animated animate__bounceIn" data-wow-delay="0.1s" data-wow-duration="1s">
                     <div class="counter" data-count="500" style="font-size: 3rem; font-weight: 700;">
                         <?php echo $happy_customers; ?></div>
                     <p style="font-size: 1.1rem;">Happy Customers</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 mb-4">
-                <div class="wow animate__animated animate__fadeIn">
+                <div class="wow animate__animated animate__bounceIn" data-wow-delay="0.2s" data-wow-duration="1s">
                     <div class="counter" data-count="1000" style="font-size: 3rem; font-weight: 700;">
                         <?php echo $events_completed; ?></div>
                     <p style="font-size: 1.1rem;">Events Completed</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 mb-4">
-                <div class="wow animate__animated animate__fadeIn">
+                <div class="wow animate__animated animate__bounceIn" data-wow-delay="0.3s" data-wow-duration="1s">
                     <div class="counter" data-count="50" style="font-size: 3rem; font-weight: 700;">
                         <?php echo $team_members; ?></div>
                     <p style="font-size: 1.1rem;">Team Members</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 mb-4">
-                <div class="wow animate__animated animate__fadeLeft">
+                <div class="wow animate__animated animate__bounceIn" data-wow-delay="0.4s" data-wow-duration="1s">
                     <div class="counter" data-count="15" style="font-size: 3rem; font-weight: 700;">
                         <?php echo $years_experience; ?></div>
                     <p style="font-size: 1.1rem;">Years Experience</p>
@@ -192,12 +194,12 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="why-choose-us" class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title-with-line wow animate__animated animate__fadeInUp">Why Choose Krishna Events?</h2>
-            <p class="section-subtitle-small wow animate__animated animate__fadeInUp">What Makes Us Different</p>
+            <h2 class="section-title-with-line wow animate__animated animate__fadeInDown" data-wow-duration="0.8s">Why Choose Krishna Events?</h2>
+            <p class="section-subtitle-small wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">What Makes Us Different</p>
         </div>
         <div class="row g-4">
             <div class="col-md-6 col-lg-3">
-                <div class="feature-box wow animate__animated animate__fadeInUp">
+                <div class="feature-box wow animate__animated animate__fadeInUp" data-wow-delay="0.1s" data-wow-duration="0.8s">
                     <div class="feature-icon">
                         <i class="fa fa-users"></i>
                     </div>
@@ -207,7 +209,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="feature-box wow animate__animated animate__fadeInUp">
+                <div class="feature-box wow animate__animated animate__fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.8s">
                     <div class="feature-icon">
                         <i class="fa fa-globe"></i>
                     </div>
@@ -217,7 +219,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="feature-box wow animate__animated animate__fadeInUp">
+                <div class="feature-box wow animate__animated animate__fadeInUp" data-wow-delay="0.3s" data-wow-duration="0.8s">
                     <div class="feature-icon">
                         <i class="fa fa-lightbulb-o"></i>
                     </div>
@@ -226,7 +228,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="feature-box wow animate__animated animate__fadeInUp">
+                <div class="feature-box wow animate__animated animate__fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.8s">
                     <div class="feature-icon">
                         <i class="fa fa-money"></i>
                     </div>
@@ -243,8 +245,8 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="gallery-grid" class="py-5 bg-white">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title-with-line wow animate__animated animate__fadeInUp">Photo Gallery</h2>
-            <p class="section-subtitle-small wow animate__animated animate__fadeInUp">Moments We've Captured</p>
+            <h2 class="section-title-with-line wow animate__animated animate__fadeInDown" data-wow-duration="0.8s">Photo Gallery</h2>
+            <p class="section-subtitle-small wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">Moments We've Captured</p>
         </div>
 
         <?php
@@ -258,14 +260,17 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
         $gallery_query = new WP_Query($gallery_args);
 
         if ($gallery_query->have_posts()) :
+            $gallery_index = 0;
         ?>
 
         <div class="gallery-grid">
             <?php while ($gallery_query->have_posts()) : $gallery_query->the_post();
                     $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                    $delay = 0.1 * $gallery_index;
+                    $gallery_index++;
                 ?>
 
-            <div class="gallery-item wow animate__animated animate__zoomIn">
+            <div class="gallery-item wow animate__animated animate__flipInY" data-wow-delay="<?php echo $delay; ?>s" data-wow-duration="0.8s">
                 <div class="gallery-card">
                     <?php if ($thumbnail): ?>
                     <img src="<?php echo esc_url($thumbnail); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
@@ -302,8 +307,8 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="testimonials" class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title-with-line wow animate__animated animate__fadeInUp">What Our Customers Say</h2>
-            <p class="section-subtitle-small wow animate__animated animate__fadeInUp">Read testimonials from our happy
+            <h2 class="section-title-with-line wow animate__animated animate__fadeInDown" data-wow-duration="0.8s">What Our Customers Say</h2>
+            <p class="section-subtitle-small wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">Read testimonials from our happy
                 customers</p>
         </div>
 
@@ -311,13 +316,15 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
             <?php
             $testimonials = get_posts(array('post_type' => 'testimonial', 'numberposts' => 3));
 
-            foreach ($testimonials as $index => $testimonial) : ?>
+            foreach ($testimonials as $index => $testimonial) :
+                $delay = 0.1 * $index;
+            ?>
             <div class="col-md-6 col-lg-4">
-                <div class="testimonial-card wow animate__animated animate__fadeInUp">
+                <div class="testimonial-card wow animate__animated animate__fadeInUp" data-wow-delay="<?php echo $delay; ?>s" data-wow-duration="0.8s">
                     <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem;">
                         "<?php echo wp_trim_words($testimonial->post_content, 30); ?>"
                     </p>
-                    <h5 style="color: #667eea; font-weight: 600;">- <?php echo $testimonial->post_title; ?></h5>
+                    <h5 style="color: #c79c6c; font-weight: 600;">- <?php echo $testimonial->post_title; ?></h5>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -329,8 +336,8 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="contact-section" class="contact-section py-5">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title-with-line wow animate__animated animate__fadeInUp">Get In Touch</h2>
-            <p class="section-subtitle-small wow animate__animated animate__fadeInUp">Have questions? We'd love to hear
+            <h2 class="section-title-with-line wow animate__animated animate__fadeInDown" data-wow-duration="0.8s">Get In Touch</h2>
+            <p class="section-subtitle-small wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">Have questions? We'd love to hear
                 from you!</p>
         </div>
 
@@ -338,7 +345,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
             <!-- Contact Card 1 - Address -->
             <?php if ($address): ?>
             <div class="col-lg-3 col-md-6">
-                <div class="contact-card wow animate__animated animate__fadeInUp">
+                <div class="contact-card wow animate__animated animate__zoomIn" data-wow-delay="0.1s" data-wow-duration="0.8s">
                     <div class="contact-card-icon">
                         <i class="fa fa-map-marker"></i>
                     </div>
@@ -351,7 +358,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
             <!-- Contact Card 2 - Phone -->
             <?php if ($phone): ?>
             <div class="col-lg-3 col-md-6">
-                <div class="contact-card wow animate__animated animate__fadeInUp">
+                <div class="contact-card wow animate__animated animate__zoomIn" data-wow-delay="0.2s" data-wow-duration="0.8s">
                     <div class="contact-card-icon">
                         <i class="fa fa-phone"></i>
                     </div>
@@ -366,7 +373,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
             <!-- Contact Card 3 - Email -->
             <?php if ($email): ?>
             <div class="col-lg-3 col-md-6">
-                <div class="contact-card wow animate__animated animate__fadeInUp">
+                <div class="contact-card wow animate__animated animate__zoomIn" data-wow-delay="0.3s" data-wow-duration="0.8s">
                     <div class="contact-card-icon">
                         <i class="fa fa-envelope"></i>
                     </div>
@@ -379,7 +386,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
             <!-- Contact Card 4 - Business Hours -->
             <?php if ($business_hours): ?>
             <div class="col-lg-3 col-md-6">
-                <div class="contact-card wow animate__animated animate__fadeInUp">
+                <div class="contact-card wow animate__animated animate__zoomIn" data-wow-delay="0.4s" data-wow-duration="0.8s">
                     <div class="contact-card-icon">
                         <i class="fa fa-clock-o"></i>
                     </div>
