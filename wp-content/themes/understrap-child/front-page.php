@@ -40,28 +40,34 @@ get_header(); ?>
 
 
                         $slide_button_text = 'Read More';
-                        $slide_button_link = '#about-us';
+                        $slide_button_link = get_permalink(get_page_by_path('about-page'));
                     ?>
                 <div class="swiper-slide">
                     <div class="swiper-slide-block">
-                        <div class="swiper-slide-block-img">
+                        <div class="swiper-slide-block-img wow animate__animated animate__fadeInRight"
+                            data-wow-duration="1s">
                             <a href="<?php echo esc_url($slide_button_link); ?>">
                                 <img src="<?php echo esc_url($slide_image_url); ?>"
                                     alt="<?php echo esc_attr($slide_title); ?>">
                             </a>
                         </div>
                         <div class="swiper-slide-block-text">
-                            <h2 class="next-main-title">
+                            <h2 class="next-main-title wow animate__animated animate__fadeInDown" data-wow-delay="0.2s"
+                                data-wow-duration="0.8s">
                                 <a
                                     href="<?php echo esc_url($slide_button_link); ?>"><?php echo esc_html($slide_title); ?></a>
                             </h2>
-                            <h3 class="next-main-subtitle"><?php echo wp_trim_words($slide_subtitle, 5); ?></h3>
+                            <h3 class="next-main-subtitle wow animate__animated animate__fadeInUp" data-wow-delay="0.4s"
+                                data-wow-duration="0.8s"><?php echo wp_trim_words($slide_subtitle, 5); ?></h3>
                             <?php if ($slide_description) : ?>
-                            <p class="next-paragraph"><?php echo wp_trim_words($slide_description, 25); ?></p>
+                            <p class="next-paragraph wow animate__animated animate__fadeInUp" data-wow-delay="0.6s"
+                                data-wow-duration="0.8s"><?php echo wp_trim_words($slide_description, 25); ?></p>
                             <?php endif; ?>
-                            <a class="next-link"
+                            <a class="next-link wow animate__animated animate__fadeInLeft" data-wow-delay="0.8s"
+                                data-wow-duration="0.8s"
                                 href="<?php echo esc_url($slide_button_link); ?>"><?php echo esc_html($slide_button_text); ?></a>
-                            <span class="next-number"><?php echo $slide_index; ?></span>
+                            <span class="next-number wow animate__animated animate__fadeIn" data-wow-delay="0.3s"
+                                data-wow-duration="1s"><?php echo $slide_index; ?></span>
                         </div>
                     </div>
                 </div>

@@ -48,9 +48,6 @@ function theme_enqueue_styles()
 	// Enqueue Krishna Events custom CSS (main styles with responsiveness)
 	wp_enqueue_style('krishna-events-custom', get_stylesheet_directory_uri() . '/css/krishna-events-custom.css', array(), $theme_version);
 
-	// Enqueue event animations CSS (scroll animations and effects)
-	wp_enqueue_style('event-animations-styles', get_stylesheet_directory_uri() . '/css/event-animations.css', array(), $theme_version);
-
 	// Enqueue Swiper CSS
 	wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css', array(), '8.0.0');
 
@@ -70,8 +67,6 @@ function theme_enqueue_styles()
 
 	wp_enqueue_script('child-understrap-scripts', get_stylesheet_directory_uri() . $theme_scripts, array(), $js_version, true);
 
-	// Enqueue event animations JavaScript
-	wp_enqueue_script('event-animations-js', get_stylesheet_directory_uri() . '/js/event-animations.js', array('jquery'), $theme_version, true);
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
 	}
