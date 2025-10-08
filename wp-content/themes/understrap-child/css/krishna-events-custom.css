@@ -76,13 +76,33 @@
     z-index: 999;
 }
 
+/* ========================================
+   Navbar Styling
+   ======================================== */
 .navbar {
     padding: 1rem 0;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.navbar.sticky-top {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
 }
 
 .navbar-brand img {
     max-height: 60px;
     width: auto;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
 }
 
 .navbar-collapse {
@@ -95,17 +115,111 @@
 
 .navbar-nav .nav-link {
     color: var(--text-dark) !important;
-    font-weight: 500;
-    padding: 0.5rem 1rem !important;
-    transition: color 0.3s ease;
+    font-weight: 600;
+    padding: 0.5rem 0.8rem !important;
+    transition: all 0.3s ease;
     text-transform: uppercase;
     font-size: 0.9rem;
     letter-spacing: 0.5px;
+    position: relative;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 80%;
+}
+
+/* Remove underline from dropdown parent items */
+.navbar-nav .dropdown .nav-link::after,
+.navbar-nav .dropdown-toggle::after {
+    display: none !important;
 }
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
     color: var(--primary-color) !important;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    animation: fadeInDown 0.3s ease;
+}
+
+.dropdown-item {
+    color: var(--text-dark) !important;
+    padding: 0.7rem 1.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus,
+.dropdown-item:active {
+    background-color: rgba(199, 156, 108, 0.1) !important;
+    color: var(--primary-color) !important;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* CTA Button in Navbar */
+.btn-primary {
+    background: linear-gradient(135deg, #c79c6c, #b8875a);
+    border: none;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(199, 156, 108, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #b8875a, #c79c6c);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(199, 156, 108, 0.4);
+}
+
+/* Mobile Toggle */
+.navbar-toggler {
+    border: 2px solid var(--primary-color);
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(199, 156, 108, 0.3);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23c79c6c' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 /* ========================================
