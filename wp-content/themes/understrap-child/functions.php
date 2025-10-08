@@ -124,115 +124,6 @@ add_action('customize_controls_enqueue_scripts', 'understrap_child_customize_con
 
 
 
-/**
- * Add custom meta boxes for slider posts
- */
-function slider_custom_meta_boxes()
-{
-	add_meta_box(
-		'slider_meta_box',
-		'Slider Settings',
-		'slider_meta_box_callback',
-		'post',
-		'normal',
-		'high'
-	);
-}
-add_action('add_meta_boxes', 'slider_custom_meta_boxes');
-
-/**
- * Slider meta box callback
- */
-function slider_meta_box_callback($post)
-{
-	// Add nonce for security
-	wp_nonce_field('slider_meta_box_nonce', 'slider_meta_box_nonce_field');
-
-	// Get existing values
-	$subtitle = get_post_meta($post->ID, 'slider_subtitle', true);
-	$button_text = get_post_meta($post->ID, 'slider_button_text', true);
-	$button_link = get_post_meta($post->ID, 'slider_button_link', true);
-?>
-<div style="padding: 10px 0;">
-    <p>
-        <label for="slider_subtitle" style="display: block; font-weight: bold; margin-bottom: 5px;">
-            Slider Subtitle:
-        </label>
-        <input type="text" id="slider_subtitle" name="slider_subtitle" value="<?php echo esc_attr($subtitle); ?>"
-            style="width: 100%;" placeholder="Enter subtitle text">
-        <span style="font-size: 12px; color: #666;">This will appear below the title in the slider</span>
-    </p>
-
-    <p>
-        <label for="slider_button_text" style="display: block; font-weight: bold; margin-bottom: 5px;">
-            Button Text:
-        </label>
-        <input type="text" id="slider_button_text" name="slider_button_text"
-            value="<?php echo esc_attr($button_text); ?>" style="width: 100%;"
-            placeholder="e.g., Learn More, Read More">
-        <span style="font-size: 12px; color: #666;">Text to display on the button (default: Learn More)</span>
-    </p>
-
-    <p>
-        <label for="slider_button_link" style="display: block; font-weight: bold; margin-bottom: 5px;">
-            Button Link:
-        </label>
-        <input type="url" id="slider_button_link" name="slider_button_link"
-            value="<?php echo esc_attr($button_link); ?>" style="width: 100%;" placeholder="https://example.com">
-        <span style="font-size: 12px; color: #666;">Leave empty to link to this post (default: post permalink)</span>
-    </p>
-
-    <div style="background: #f0f0f1; padding: 10px; border-left: 4px solid #2271b1; margin-top: 15px;">
-        <strong>Note:</strong>
-        <ul style="margin: 5px 0 0 20px;">
-            <li>Make sure to set a <strong>Featured Image</strong> for this post to appear in the slider</li>
-            <li>Add this post to the <strong>"Slider"</strong> category to display it on the front page</li>
-            <li>The post title will be used as the slider heading</li>
-        </ul>
-    </div>
-</div>
-<?php
-}
-
-/**
- * Save slider meta box data
- */
-function save_slider_meta_box_data($post_id)
-{
-	// Check nonce
-	if (! isset($_POST['slider_meta_box_nonce_field'])) {
-		return;
-	}
-	if (! wp_verify_nonce($_POST['slider_meta_box_nonce_field'], 'slider_meta_box_nonce')) {
-		return;
-	}
-
-	// Check autosave
-	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-		return;
-	}
-
-	// Check permissions
-	if (! current_user_can('edit_post', $post_id)) {
-		return;
-	}
-
-	// Save subtitle
-	if (isset($_POST['slider_subtitle'])) {
-		update_post_meta($post_id, 'slider_subtitle', sanitize_text_field($_POST['slider_subtitle']));
-	}
-
-	// Save button text
-	if (isset($_POST['slider_button_text'])) {
-		update_post_meta($post_id, 'slider_button_text', sanitize_text_field($_POST['slider_button_text']));
-	}
-
-	// Save button link
-	if (isset($_POST['slider_button_link'])) {
-		update_post_meta($post_id, 'slider_button_link', esc_url_raw($_POST['slider_button_link']));
-	}
-}
-add_action('save_post', 'save_slider_meta_box_data');
 
 
 /**
@@ -332,6 +223,39 @@ function my_register_testimonials_cpt()
 	register_post_type('testimonial', $args);
 }
 add_action('init', 'my_register_testimonials_cpt');
+
+
+/**
+ * Register Slider Custom Post Type
+ */
+function my_register_slider_cpt()
+{
+	$labels = array(
+		'name'               => 'Sliders',
+		'singular_name'      => 'Slider',
+		'add_new'            => 'Add New Slider',
+		'add_new_item'       => 'Add New Slider',
+		'edit_item'          => 'Edit Slider',
+		'new_item'           => 'New Slider',
+		'view_item'          => 'View Slider',
+		'search_items'       => 'Search Sliders',
+		'not_found'          => 'No sliders found',
+		'not_found_in_trash' => 'No sliders found in Trash',
+	);
+
+	$args = array(
+		'labels'             => $labels,
+		'public'             => true,
+		'has_archive'        => false,
+		'rewrite'            => array('slug' => 'slider'),
+		'supports'           => array('title', 'editor', 'thumbnail'),
+		'menu_icon'          => 'dashicons-images-alt2',
+		'show_in_rest'       => true,
+	);
+
+	register_post_type('slider', $args);
+}
+add_action('init', 'my_register_slider_cpt');
 
 
 /**
@@ -445,8 +369,8 @@ function team_meta_box_callback($post)
         <label for="team_phone" style="display: block; font-weight: bold; margin-bottom: 5px;">
             Phone Number:
         </label>
-        <input type="text" id="team_phone" name="team_phone" value="<?php echo esc_attr($phone); ?>" style="width: 100%;"
-            placeholder="+91 1234567890">
+        <input type="text" id="team_phone" name="team_phone" value="<?php echo esc_attr($phone); ?>"
+            style="width: 100%;" placeholder="+91 1234567890">
     </p>
 
     <p>
@@ -542,7 +466,8 @@ add_action('save_post', 'save_team_meta_box_data');
 
 
 // Enqueue Animate.css and WOW.js
-function enqueue_animate_css() {
+function enqueue_animate_css()
+{
 	// Enqueue Animate.css from CDN
 	wp_enqueue_style('animate-css', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css', array(), '4.1.1');
 

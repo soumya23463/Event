@@ -10,11 +10,10 @@ get_header(); ?>
 <!-- Hero Swiper Slider Section - Krishna Events Style -->
 <section id="hero-swiper" class="hero-swiper-section">
     <?php
-    // Query for slider posts
+    // Query for slider posts (Custom Post Type)
     $slider_args = array(
-        'post_type'      => 'post',
+        'post_type'      => 'slider',
         'posts_per_page' => 3,
-        'category_name'  => 'slider',
         'orderby'        => 'date',
         'order'          => 'DESC',
         'post_status'    => 'publish'
@@ -32,37 +31,33 @@ get_header(); ?>
                     while ($slider_query->have_posts()) : $slider_query->the_post();
                         $slide_index++;
 
-                        // Get featured image or fallback
-                        $slide_image = get_the_post_thumbnail_url(get_the_ID(), 'full');
-                        if (!$slide_image) {
-                            $slide_image = 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&h=800&fit=crop';
-                        }
+                        // Get slider data
+                        $slide_title = get_the_title(); // WordPress title
+                        $slide_subtitle = get_field('subtitle'); // ACF field only
+                        $slide_description = get_the_content(); // WordPress content editor
+                        $slide_image_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); // Featured image
 
-                        // Get custom fields
-                        $slide_subtitle = get_post_meta(get_the_ID(), 'slider_subtitle', true);
-                        $slide_button_text = get_post_meta(get_the_ID(), 'slider_button_text', true);
-                        $slide_button_link = get_post_meta(get_the_ID(), 'slider_button_link', true);
 
-                        // Fallback values
-                        if (empty($slide_subtitle)) $slide_subtitle = 'Wedding & Event Planner';
-                        if (empty($slide_button_text)) $slide_button_text = 'Read More';
-                        if (empty($slide_button_link)) $slide_button_link = '#contact-section';
+
+                        $slide_button_text = 'Read More';
+                        $slide_button_link = '#about-us';
                     ?>
                 <div class="swiper-slide">
                     <div class="swiper-slide-block">
                         <div class="swiper-slide-block-img">
                             <a href="<?php echo esc_url($slide_button_link); ?>">
-                                <img src="<?php echo esc_url($slide_image); ?>"
-                                    alt="<?php echo esc_attr(get_the_title()); ?>">
+                                <img src="<?php echo esc_url($slide_image_url); ?>"
+                                    alt="<?php echo esc_attr($slide_title); ?>">
                             </a>
                         </div>
                         <div class="swiper-slide-block-text">
                             <h2 class="next-main-title">
-                                <a href="<?php echo esc_url($slide_button_link); ?>"><?php the_title(); ?></a>
+                                <a
+                                    href="<?php echo esc_url($slide_button_link); ?>"><?php echo esc_html($slide_title); ?></a>
                             </h2>
                             <h3 class="next-main-subtitle"><?php echo esc_html($slide_subtitle); ?></h3>
-                            <?php if (get_the_content()) : ?>
-                            <p class="next-paragraph"><?php echo wp_trim_words(get_the_content(), 15); ?></p>
+                            <?php if ($slide_description) : ?>
+                            <p class="next-paragraph"><?php echo wp_trim_words($slide_description, 15); ?></p>
                             <?php endif; ?>
                             <a class="next-link"
                                 href="<?php echo esc_url($slide_button_link); ?>"><?php echo esc_html($slide_button_text); ?></a>
@@ -77,30 +72,6 @@ get_header(); ?>
             <!-- Navigation Buttons -->
             <div class="swiper-button-next"><i class="fa fa-arrow-right"></i></div>
             <div class="swiper-button-prev"><i class="fa fa-arrow-left"></i></div>
-        </div>
-    </div>
-    <?php else : ?>
-    <!-- Fallback Slider -->
-    <div class="next-container-center">
-        <div class="swiper" id="heroSwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="swiper-slide-block">
-                        <div class="swiper-slide-block-img">
-                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&h=800&fit=crop"
-                                alt="Krishna Events">
-                        </div>
-                        <div class="swiper-slide-block-text">
-                            <h2 class="next-main-title"><a href="#contact-section">Krishna Events</a></h2>
-                            <h3 class="next-main-subtitle">Wedding & Event Planner</h3>
-                            <p class="next-paragraph">We would love to meet up and chat about how we can make YOUR DREAM
-                                wedding happen!</p>
-                            <a class="next-link" href="#contact-section">Read More</a>
-                            <span class="next-number">1</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <?php endif; ?>
@@ -156,7 +127,8 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
     <div class="container">
         <div class="text-center mb-5">
             <h2 class="section-title-with-line wow animate__animated animate__fadeInUp">Our Services</h2>
-            <p class="section-subtitle-small wow animate__animated animate__fadeInUp">Complete Event Management Solutions</p>
+            <p class="section-subtitle-small wow animate__animated animate__fadeInUp">Complete Event Management
+                Solutions</p>
         </div>
         <div class="row g-4">
             <?php
@@ -284,8 +256,8 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 
         <div class="gallery-grid">
             <?php while ($gallery_query->have_posts()) : $gallery_query->the_post();
-                $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'large');
-            ?>
+                    $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                ?>
 
             <div class="gallery-item wow animate__animated animate__zoomIn">
                 <div class="gallery-card">
@@ -325,7 +297,8 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
     <div class="container">
         <div class="text-center mb-5">
             <h2 class="section-title-with-line wow animate__animated animate__fadeInUp">What Our Customers Say</h2>
-            <p class="section-subtitle-small wow animate__animated animate__fadeInUp">Read testimonials from our happy customers</p>
+            <p class="section-subtitle-small wow animate__animated animate__fadeInUp">Read testimonials from our happy
+                customers</p>
         </div>
 
         <div class="row g-4">
@@ -351,7 +324,8 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
     <div class="container">
         <div class="text-center mb-5">
             <h2 class="section-title-with-line wow animate__animated animate__fadeInUp">Get In Touch</h2>
-            <p class="section-subtitle-small wow animate__animated animate__fadeInUp">Have questions? We'd love to hear from you!</p>
+            <p class="section-subtitle-small wow animate__animated animate__fadeInUp">Have questions? We'd love to hear
+                from you!</p>
         </div>
 
         <div class="row g-4">
