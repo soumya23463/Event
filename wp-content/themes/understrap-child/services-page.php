@@ -33,8 +33,8 @@ $page_id = get_the_ID();
         $services = get_posts(array(
             'post_type' => 'service',
             'numberposts' => -1,
-            'orderby' => 'menu_order',
-            'order' => 'ASC'
+            'orderby' => 'ID',
+            'order' => 'DESC'
         ));
 
         if ($services) :
@@ -43,19 +43,31 @@ $page_id = get_the_ID();
         <div class="row g-4">
             <?php
                 foreach ($services as $index => $service) :
-                    $service_icon = get_post_meta($service->ID, 'service_icon', true);
+                    $service_icon = 'fa-diamond';
 
-                    // Default icon if not set
-                    if (empty($service_icon)) {
-                        $service_icon = 'fa-check-circle';
-                    }
                 ?>
 
-            <div class="col-md-4">
+            <div class="col-lg-3 col-md-6">
                 <div class="service-list-card wow animate__animated animate__fadeInUp"
-                    data-wow-delay="<?php echo ($index * 0.05); ?>s">
-                    <i class="fa <?php echo esc_attr($service_icon); ?>"></i>
-                    <h5><?php echo esc_html($service->post_title); ?></h5>
+                    data-wow-delay="<?php echo ($index * 0.1); ?>s">
+                    <div class="row g-2">
+                        <div class="col-2">
+                            <i class="fa <?php echo esc_attr($service_icon); ?> wow animate__animated animate__bounceIn"
+                                data-wow-delay="<?php echo $index * 0.1 + 0.2; ?>s"></i>
+                        </div>
+                        <div class="col-10">
+                            <h5 class="wow animate__animated animate__fadeInUp"
+                                data-wow-delay="<?php echo $index * 0.1 + 0.3; ?>s">
+                                <?php echo esc_html($service->post_title); ?>
+                            </h5>
+                            <?php if ($service->post_content): ?>
+                            <p class="service-description wow animate__animated animate__fadeIn"
+                                data-wow-delay="<?php echo $index * 0.1 + 0.4; ?>s">
+                                <?php echo wp_trim_words($service->post_content, 7); ?>
+                            </p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -66,7 +78,7 @@ $page_id = get_the_ID();
         <div class="text-center py-5">
             <div class="alert alert-info">
                 <i class="fa fa-info-circle me-2"></i>
-                No services found. Please add services from the WordPress admin.
+                No services found
             </div>
         </div>
         <?php endif; ?>

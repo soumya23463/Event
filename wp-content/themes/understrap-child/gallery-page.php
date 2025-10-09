@@ -42,11 +42,17 @@ $page_id = get_the_ID();
         ?>
 
         <div class="gallery-grid">
-            <?php while ($gallery_query->have_posts()) : $gallery_query->the_post();
+            <?php
+                $index = 0;
+                while ($gallery_query->have_posts()) : $gallery_query->the_post();
                     $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'large');
+
+                    // Calculate staggered delay - 0.1s increment per item
+                    $delay = ($index % 12) * 0.5;
+                    $index++;
                 ?>
 
-            <div class="gallery-item wow animate__animated animate__zoomIn">
+            <div class="gallery-item wow animate__animated animate__zoomIn" data-wow-delay="<?php echo $delay; ?>s">
                 <div class="gallery-card">
                     <?php if ($thumbnail): ?>
                     <img src="<?php echo esc_url($thumbnail); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
@@ -57,8 +63,11 @@ $page_id = get_the_ID();
                     <?php endif; ?>
 
                     <div class="gallery-overlay">
-                        <h4><?php the_title(); ?></h4>
-                        <a href="<?php echo esc_url($thumbnail); ?>" class="gallery-zoom" data-fancybox="gallery"
+                        <h4 class="wow animate__animated animate__fadeInUp"
+                            data-wow-delay="<?php echo $delay + 0.2; ?>s"><?php the_title(); ?></h4>
+                        <a href="<?php echo esc_url($thumbnail); ?>"
+                            class="gallery-zoom wow animate__animated animate__bounceIn"
+                            data-wow-delay="<?php echo $delay + 0.3; ?>s" data-fancybox="gallery"
                             data-caption="<?php echo esc_attr(get_the_title()); ?>">
                             <i class="fa fa-search-plus"></i>
                         </a>

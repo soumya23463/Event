@@ -18,7 +18,8 @@ defined('ABSPATH') || exit;
         <div class="row g-4">
             <!-- Company Info -->
             <div class="col-lg-4 col-md-6">
-                <div class="footer-widget wow animate__animated animate__fadeInUp" data-wow-delay="0.1s" data-wow-duration="0.8s">
+                <div class="footer-widget wow animate__animated animate__fadeInUp" data-wow-delay="0.1s"
+                    data-wow-duration="0.8s">
                     <h4><?php bloginfo('name'); ?></h4>
                     <p><?php
                         // Get the homepage ID
@@ -48,18 +49,21 @@ defined('ABSPATH') || exit;
                         ?>
 
 
-                        <a href="<?php echo esc_url($facebook_url); ?>" class="social-icon wow animate__animated animate__bounceIn" data-wow-delay="0.3s" target="_blank"
-                            rel="noopener noreferrer" aria-label="Facebook">
+                        <a href="<?php echo esc_url($facebook_url); ?>"
+                            class="social-icon wow animate__animated animate__bounceIn" data-wow-delay="0.3s"
+                            target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                             <i class="fa fa-facebook"></i>
                         </a>
 
-                        <a href="<?php echo esc_url($instagram_url); ?>" class="social-icon wow animate__animated animate__bounceIn" data-wow-delay="0.4s" target="_blank"
-                            rel="noopener noreferrer" aria-label="Instagram">
+                        <a href="<?php echo esc_url($instagram_url); ?>"
+                            class="social-icon wow animate__animated animate__bounceIn" data-wow-delay="0.4s"
+                            target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                             <i class="fa fa-instagram"></i>
                         </a>
 
-                        <a href="<?php echo esc_url($youtube_url); ?>" class="social-icon wow animate__animated animate__bounceIn" data-wow-delay="0.5s" target="_blank"
-                            rel="noopener noreferrer" aria-label="YouTube">
+                        <a href="<?php echo esc_url($youtube_url); ?>"
+                            class="social-icon wow animate__animated animate__bounceIn" data-wow-delay="0.5s"
+                            target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                             <i class="fa fa-youtube"></i>
                         </a>
 
@@ -69,7 +73,8 @@ defined('ABSPATH') || exit;
 
             <!-- Quick Links -->
             <div class="col-lg-2 col-md-6">
-                <div class="footer-widget wow animate__animated animate__fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.8s">
+                <div class="footer-widget wow animate__animated animate__fadeInUp" data-wow-delay="0.2s"
+                    data-wow-duration="0.8s">
                     <h4>Quick Links</h4>
                     <ul class="list-unstyled">
                         <?php
@@ -89,7 +94,8 @@ defined('ABSPATH') || exit;
 
             <!-- Services -->
             <div class="col-lg-3 col-md-6">
-                <div class="footer-widget wow animate__animated animate__fadeInUp" data-wow-delay="0.3s" data-wow-duration="0.8s">
+                <div class="footer-widget wow animate__animated animate__fadeInUp" data-wow-delay="0.3s"
+                    data-wow-duration="0.8s">
                     <h4>Our Services</h4>
                     <ul class="list-unstyled">
                         <?php
@@ -118,7 +124,8 @@ defined('ABSPATH') || exit;
 
             <!-- Contact Info -->
             <div class="col-lg-3 col-md-6">
-                <div class="footer-widget wow animate__animated animate__fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.8s">
+                <div class="footer-widget wow animate__animated animate__fadeInUp" data-wow-delay="0.4s"
+                    data-wow-duration="0.8s">
                     <h4>Contact Us</h4>
                     <ul class="list-unstyled">
                         <?php
@@ -160,13 +167,15 @@ defined('ABSPATH') || exit;
         <!-- Copyright -->
         <div class="row mt-4 pt-4 border-top border-secondary">
             <div class="col-md-6 text-center text-md-start">
-                <p class="mb-0 wow animate__animated animate__fadeInLeft" data-wow-delay="0.5s" style="color: rgba(255, 255, 255, 0.7);">
+                <p class="mb-0 wow animate__animated animate__fadeInLeft" data-wow-delay="0.5s"
+                    style="color: rgba(255, 255, 255, 0.7);">
                     &copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. All Rights Reserved.
                 </p>
             </div>
             <div class="col-md-6 text-center text-md-end">
-                <p class="mb-0 wow animate__animated animate__fadeInRight" data-wow-delay="0.5s" style="color: rgba(255, 255, 255, 0.7);">
-                    Designed By <span style="color: #c79c6c;">Er. Soumya Kesarwani</span> for Perfect Events
+                <p class="mb-0 wow animate__animated animate__fadeInRight" data-wow-delay="0.5s"
+                    style="color: rgba(255, 255, 255, 0.7);">
+                    Designed By <span style="color: #c79c6c;"> Soumya Kesarwani</span> for Perfect Events
                 </p>
             </div>
         </div>

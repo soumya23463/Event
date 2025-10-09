@@ -144,7 +144,7 @@ function my_register_services_cpt()
 		'public'             => true,
 		'has_archive'        => false,
 		'rewrite'            => array('slug' => 'services'),
-		'supports'           => array('title', 'thumbnail'),
+		'supports'           => array('title', 'editor', 'thumbnail'),
 		'menu_icon'          => 'dashicons-hammer',
 		'show_in_rest'       => true,
 	);
@@ -319,145 +319,7 @@ function my_register_team_cpt()
 add_action('init', 'my_register_team_cpt');
 
 
-/**
- * Add custom meta boxes for team members
- */
-function team_custom_meta_boxes()
-{
-	add_meta_box(
-		'team_meta_box',
-		'Team Member Details',
-		'team_meta_box_callback',
-		'team',
-		'normal',
-		'high'
-	);
-}
-add_action('add_meta_boxes', 'team_custom_meta_boxes');
 
-/**
- * Team meta box callback
- */
-function team_meta_box_callback($post)
-{
-	// Add nonce for security
-	wp_nonce_field('team_meta_box_nonce', 'team_meta_box_nonce_field');
-
-	// Get existing values
-	$position = get_post_meta($post->ID, 'team_position', true);
-	$phone = get_post_meta($post->ID, 'team_phone', true);
-	$email = get_post_meta($post->ID, 'team_email', true);
-	$facebook = get_post_meta($post->ID, 'team_facebook', true);
-	$instagram = get_post_meta($post->ID, 'team_instagram', true);
-	$twitter = get_post_meta($post->ID, 'team_twitter', true);
-?>
-<div style="padding: 10px 0;">
-    <p>
-        <label for="team_position" style="display: block; font-weight: bold; margin-bottom: 5px;">
-            Position/Role:
-        </label>
-        <input type="text" id="team_position" name="team_position" value="<?php echo esc_attr($position); ?>"
-            style="width: 100%;" placeholder="e.g., Event Manager, Coordinator">
-    </p>
-
-    <p>
-        <label for="team_phone" style="display: block; font-weight: bold; margin-bottom: 5px;">
-            Phone Number:
-        </label>
-        <input type="text" id="team_phone" name="team_phone" value="<?php echo esc_attr($phone); ?>"
-            style="width: 100%;" placeholder="+91 1234567890">
-    </p>
-
-    <p>
-        <label for="team_email" style="display: block; font-weight: bold; margin-bottom: 5px;">
-            Email Address:
-        </label>
-        <input type="email" id="team_email" name="team_email" value="<?php echo esc_attr($email); ?>"
-            style="width: 100%;" placeholder="member@example.com">
-    </p>
-
-    <h4 style="margin-top: 20px; border-top: 1px solid #ddd; padding-top: 15px;">Social Media Links (Optional)</h4>
-
-    <p>
-        <label for="team_facebook" style="display: block; font-weight: bold; margin-bottom: 5px;">
-            Facebook URL:
-        </label>
-        <input type="url" id="team_facebook" name="team_facebook" value="<?php echo esc_attr($facebook); ?>"
-            style="width: 100%;" placeholder="https://facebook.com/username">
-    </p>
-
-    <p>
-        <label for="team_instagram" style="display: block; font-weight: bold; margin-bottom: 5px;">
-            Instagram URL:
-        </label>
-        <input type="url" id="team_instagram" name="team_instagram" value="<?php echo esc_attr($instagram); ?>"
-            style="width: 100%;" placeholder="https://instagram.com/username">
-    </p>
-
-    <p>
-        <label for="team_twitter" style="display: block; font-weight: bold; margin-bottom: 5px;">
-            Twitter URL:
-        </label>
-        <input type="url" id="team_twitter" name="team_twitter" value="<?php echo esc_attr($twitter); ?>"
-            style="width: 100%;" placeholder="https://twitter.com/username">
-    </p>
-
-    <div style="background: #f0f0f1; padding: 10px; border-left: 4px solid #2271b1; margin-top: 15px;">
-        <strong>Note:</strong>
-        <ul style="margin: 5px 0 0 20px;">
-            <li>Set a <strong>Featured Image</strong> for the team member's photo</li>
-            <li>Use the editor above to add a bio or description</li>
-            <li>Position/Role is required, other fields are optional</li>
-        </ul>
-    </div>
-</div>
-<?php
-}
-
-/**
- * Save team meta box data
- */
-function save_team_meta_box_data($post_id)
-{
-	// Check nonce
-	if (! isset($_POST['team_meta_box_nonce_field'])) {
-		return;
-	}
-	if (! wp_verify_nonce($_POST['team_meta_box_nonce_field'], 'team_meta_box_nonce')) {
-		return;
-	}
-
-	// Check autosave
-	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-		return;
-	}
-
-	// Check permissions
-	if (! current_user_can('edit_post', $post_id)) {
-		return;
-	}
-
-	// Save team member fields
-	if (isset($_POST['team_position'])) {
-		update_post_meta($post_id, 'team_position', sanitize_text_field($_POST['team_position']));
-	}
-	if (isset($_POST['team_phone'])) {
-		update_post_meta($post_id, 'team_phone', sanitize_text_field($_POST['team_phone']));
-	}
-	if (isset($_POST['team_email'])) {
-		update_post_meta($post_id, 'team_email', sanitize_email($_POST['team_email']));
-	}
-	if (isset($_POST['team_facebook'])) {
-		update_post_meta($post_id, 'team_facebook', esc_url_raw($_POST['team_facebook']));
-	}
-	if (isset($_POST['team_instagram'])) {
-		update_post_meta($post_id, 'team_instagram', esc_url_raw($_POST['team_instagram']));
-	}
-	if (isset($_POST['team_twitter'])) {
-		update_post_meta($post_id, 'team_twitter', esc_url_raw($_POST['team_twitter']));
-	}
-}
-add_action('save_post', 'save_team_meta_box_data');
 
 
 // Enqueue Animate.css and WOW.js

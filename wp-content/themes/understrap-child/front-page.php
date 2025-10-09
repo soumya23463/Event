@@ -138,15 +138,31 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
         </div>
         <div class="row g-4">
             <?php
-            $services = get_posts(array('post_type' => 'service', 'numberposts' => -1));
+            $services = get_posts(array('post_type' => 'service', 'numberposts' => -1, 'orderby' => 'ID', 'order' => 'DESC'));
 
             foreach ($services as $index => $service) :
-                $delay = 0.1 * ($index % 3); // Stagger animation by column
+                $service_icon = 'fa-diamond';
+                $delay = $index * 0.1;
             ?>
-            <div class="col-md-4">
-                <div class="service-list-card wow animate__animated animate__flipInX" data-wow-delay="<?php echo $delay; ?>s" data-wow-duration="0.8s">
-                    <i class="fa fa-check-circle"></i>
-                    <h5><?php echo $service->post_title; ?></h5>
+            <div class="col-lg-3 col-md-6">
+                <div class="service-list-card wow animate__animated animate__fadeInUp" data-wow-delay="<?php echo $delay; ?>s">
+                    <div class="row g-2">
+                        <div class="col-2">
+                            <i class="fa <?php echo esc_attr($service_icon); ?> wow animate__animated animate__bounceIn"
+                                data-wow-delay="<?php echo $delay + 0.2; ?>s"></i>
+                        </div>
+                        <div class="col-10">
+                            <h5 class="wow animate__animated animate__fadeInUp"
+                                data-wow-delay="<?php echo $delay + 0.3; ?>s"><?php echo esc_html($service->post_title); ?>
+                            </h5>
+                            <?php if ($service->post_content): ?>
+                            <p class="service-description wow animate__animated animate__fadeIn"
+                                data-wow-delay="<?php echo $delay + 0.4; ?>s">
+                                <?php echo wp_trim_words($service->post_content, 15); ?>
+                            </p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -314,17 +330,39 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 
         <div class="row g-4">
             <?php
-            $testimonials = get_posts(array('post_type' => 'testimonial', 'numberposts' => 3));
+            $testimonials = get_posts(array('post_type' => 'testimonial', 'numberposts' => 3, 'orderby' => 'ID', 'order' => 'DESC'));
+
+            // Get default image
+            $default_image = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
+            if (!$default_image) {
+                $default_image = get_stylesheet_directory_uri() . '/images/default-user.webp';
+            }
 
             foreach ($testimonials as $index => $testimonial) :
+                // Get testimonial user image
+                $user_image = get_the_post_thumbnail_url($testimonial->ID, 'thumbnail');
+                if (!$user_image) {
+                    $user_image = $default_image;
+                }
+
                 $delay = 0.1 * $index;
             ?>
             <div class="col-md-6 col-lg-4">
                 <div class="testimonial-card wow animate__animated animate__fadeInUp" data-wow-delay="<?php echo $delay; ?>s" data-wow-duration="0.8s">
-                    <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem;">
+
+                    <!-- User Image -->
+                    <div class="testimonial-user-image wow animate__animated animate__zoomIn" data-wow-delay="<?php echo $delay + 0.1; ?>s">
+                        <img src="<?php echo esc_url($user_image); ?>"
+                             alt="<?php echo esc_attr($testimonial->post_title); ?>">
+                    </div>
+
+                    <!-- Testimonial Content -->
+                    <p class="testimonial-content">
                         "<?php echo wp_trim_words($testimonial->post_content, 30); ?>"
                     </p>
-                    <h5 style="color: #c79c6c; font-weight: 600;">- <?php echo $testimonial->post_title; ?></h5>
+
+                    <!-- User Name -->
+                    <h5 class="testimonial-author">- <?php echo esc_html($testimonial->post_title); ?></h5>
                 </div>
             </div>
             <?php endforeach; ?>

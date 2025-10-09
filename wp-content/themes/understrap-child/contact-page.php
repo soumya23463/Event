@@ -46,12 +46,14 @@ $page_id = get_the_ID();
             <!-- Contact Card 1 - Address -->
             <?php if ($address): ?>
             <div class="col-lg-3 col-md-6">
-                <div class="contact-card wow animate__animated animate__fadeInUp">
-                    <div class="contact-card-icon">
+                <div class="contact-card wow animate__animated animate__zoomIn" data-wow-delay="0.1s">
+                    <div class="contact-card-icon wow animate__animated animate__bounceIn" data-wow-delay="0.3s">
                         <i class="fa fa-map-marker"></i>
                     </div>
-                    <h4>Address</h4>
-                    <p><?php echo nl2br(esc_html($address)); ?></p>
+                    <h4 class="wow animate__animated animate__fadeInLeftBig" data-wow-delay="0.4s">Address
+                    </h4>
+                    <p class="wow animate__animated animate__fadeInRightBig" data-wow-delay="0.5s">
+                        <?php echo nl2br(esc_html($address)); ?></p>
                 </div>
             </div>
             <?php endif; ?>
@@ -59,12 +61,13 @@ $page_id = get_the_ID();
             <!-- Contact Card 2 - Phone -->
             <?php if ($phone): ?>
             <div class="col-lg-3 col-md-6">
-                <div class="contact-card wow animate__animated animate__fadeInUp">
-                    <div class="contact-card-icon">
+                <div class="contact-card wow animate__animated animate__zoomIn" data-wow-delay="0.6s">
+                    <div class="contact-card-icon wow animate__animated animate__bounceIn" data-wow-delay="0.9s">
                         <i class="fa fa-phone"></i>
                     </div>
-                    <h4>Phone</h4>
-                    <p><a
+                    <h4 class="wow animate__animated animate__fadeInLeftBig" data-wow-delay="0.10s">Phone</h4>
+                    <p class="wow animate__animated animate__fadeInRightBig" data-wow-delay="0.11s">
+                        <a
                             href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $phone)); ?>"><?php echo esc_html($phone); ?></a>
                     </p>
                 </div>
@@ -74,12 +77,14 @@ $page_id = get_the_ID();
             <!-- Contact Card 3 - Email -->
             <?php if ($email): ?>
             <div class="col-lg-3 col-md-6">
-                <div class="contact-card wow animate__animated animate__fadeInUp">
-                    <div class="contact-card-icon">
+                <div class="contact-card wow animate__animated animate__zoomIn" data-wow-delay="0.12s">
+                    <div class="contact-card-icon wow animate__animated animate__bounceIn" data-wow-delay="0.15s">
                         <i class="fa fa-envelope"></i>
                     </div>
-                    <h4>Email</h4>
-                    <p><a href="mailto:<?php echo esc_attr($email); ?>"><?php echo esc_html($email); ?></a></p>
+                    <h4 class="wow animate__animated animate__fadeInLeftBig" data-wow-delay="0.16s">Email</h4>
+                    <p class="wow animate__animated animate__fadeInRightBig" data-wow-delay="0.17s">
+                        <a href="mailto:<?php echo esc_attr($email); ?>"><?php echo esc_html($email); ?></a>
+                    </p>
                 </div>
             </div>
             <?php endif; ?>
@@ -87,61 +92,20 @@ $page_id = get_the_ID();
             <!-- Contact Card 4 - Business Hours -->
             <?php if ($business_hours): ?>
             <div class="col-lg-3 col-md-6">
-                <div class="contact-card wow animate__animated animate__fadeInUp">
-                    <div class="contact-card-icon">
+                <div class="contact-card wow animate__animated animate__zoomIn" data-wow-delay="0.18s">
+                    <div class="contact-card-icon wow animate__animated animate__bounceIn" data-wow-delay="0.21s">
                         <i class="fa fa-clock-o"></i>
                     </div>
-                    <h4>Our Hours</h4>
-                    <p><?php echo nl2br(esc_html($business_hours)); ?></p>
+                    <h4 <h4 class="wow animate__animated animate__fadeInLeftBig" data-wow-delay="0.22s">Our Hours</h4>
+                    </h4>
+                    <p class="wow animate__animated animate__fadeInRightBig" data-wow-delay="0.23s">
+                        <?php echo nl2br(esc_html($business_hours)); ?></p>
                 </div>
             </div>
             <?php endif; ?>
         </div>
 
-        <!-- Social Links Section -->
-        <?php if ($facebook_url || $instagram_url || $twitter_url || $youtube_url): ?>
-        <div class="row mt-5">
-            <div class="col-12">
-                <div class="social-section text-center wow animate__animated animate__fadeInUp">
-                    <h3 class="section-title-with-line mb-3">Connect With Us</h3>
-                    <p class="section-subtitle-small">Follow us on social media</p>
-                    <div class="social-links-wrapper">
-                        <?php if ($facebook_url): ?>
-                        <a href="<?php echo esc_url($facebook_url); ?>" target="_blank"
-                            class="social-link-large facebook">
-                            <i class="fa fa-facebook"></i>
-                            <span>Facebook</span>
-                        </a>
-                        <?php endif; ?>
 
-                        <?php if ($instagram_url): ?>
-                        <a href="<?php echo esc_url($instagram_url); ?>" target="_blank"
-                            class="social-link-large instagram">
-                            <i class="fa fa-instagram"></i>
-                            <span>Instagram</span>
-                        </a>
-                        <?php endif; ?>
-
-                        <?php if ($twitter_url): ?>
-                        <a href="<?php echo esc_url($twitter_url); ?>" target="_blank"
-                            class="social-link-large twitter">
-                            <i class="fa fa-twitter"></i>
-                            <span>Twitter</span>
-                        </a>
-                        <?php endif; ?>
-
-                        <?php if ($youtube_url): ?>
-                        <a href="<?php echo esc_url($youtube_url); ?>" target="_blank"
-                            class="social-link-large youtube">
-                            <i class="fa fa-youtube"></i>
-                            <span>YouTube</span>
-                        </a>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php endif; ?>
     </div>
 </section>
 
@@ -150,12 +114,11 @@ $page_id = get_the_ID();
 $map_embed_url = get_field('map_embed_url', $home_id);
 if ($map_embed_url):
 ?>
-<section id="map-section" class="py-0">
-    <div class="map-container">
-        <iframe
-            src="<?php echo esc_url($map_embed_url); ?>"
-            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+<section id="map-section" class="py-0" class="wow animate__animated animate__fadeInRightBig" data-wow-delay="0.24s">
+    <div class="map-container" class="wow animate__animated animate__fadeInRightLeft" data-wow-delay="0.25s">
+        <iframe class="map-container" class="wow animate__animated animate__fadeInRightLeft" data-wow-delay="0.26s"
+            src="<?php echo esc_url($map_embed_url); ?>" width="100%" height="450" style="border:0;" allowfullscreen=""
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </section>
 <?php endif; ?>
