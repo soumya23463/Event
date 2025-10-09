@@ -2307,3 +2307,23 @@ footer a:hover {
         font-size: 1.2rem;
     }
 }
+
+/* ========================================
+   Character Animation for Titles
+   ======================================== */
+.char-animate {
+    display: inline-block;
+    opacity: 0;
+    animation: charFadeIn 0.8s ease-out forwards;
+}
+
+@keyframes charFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) rotateX(-90deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}

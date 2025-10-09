@@ -17,8 +17,8 @@ $page_id = get_the_ID();
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="page-title wow animate__animated animate__fadeInDown">Our Gallery</h1>
-                <p class="page-subtitle wow animate__animated animate__fadeInUp">Capturing Beautiful Moments</p>
+                <h1 class="page-title gsap-fade-scale-animate">Our Gallery</h1>
+                <p class="page-subtitle gsap-fade-scale-animate">Capturing Beautiful Moments</p>
             </div>
         </div>
     </div>

@@ -111,7 +111,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="wow animate__animated animate__fadeInLeft" data-wow-duration="1s">
-                    <h2 class="section-title-with-line text-left mb-3 wow animate__animated animate__fadeInUp" data-wow-delay="0.2s"><?php echo $about_title; ?></h2>
+                    <h2 class="section-title-with-line text-left mb-3 gsap-text-animate"><?php echo $about_title; ?></h2>
                     <p class="section-subtitle-small text-left wow animate__animated animate__fadeInUp" data-wow-delay="0.4s"><?php echo $about_description; ?></p>
                 </div>
             </div>
@@ -132,7 +132,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="services-overview" class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title-with-line wow animate__animated animate__fadeInDown" data-wow-duration="0.8s">Our Services</h2>
+            <h2 class="section-title-with-line gsap-text-animate">Our Services</h2>
             <p class="section-subtitle-small wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">Complete Event Management
                 Solutions</p>
         </div>
@@ -210,7 +210,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="why-choose-us" class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title-with-line wow animate__animated animate__fadeInDown" data-wow-duration="0.8s">Why Choose Krishna Events?</h2>
+            <h2 class="section-title-with-line gsap-text-animate">Why Choose Krishna Events?</h2>
             <p class="section-subtitle-small wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">What Makes Us Different</p>
         </div>
         <div class="row g-4">
@@ -261,7 +261,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="gallery-grid" class="py-5 bg-white">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title-with-line wow animate__animated animate__fadeInDown" data-wow-duration="0.8s">Photo Gallery</h2>
+            <h2 class="section-title-with-line gsap-text-animate">Photo Gallery</h2>
             <p class="section-subtitle-small wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">Moments We've Captured</p>
         </div>
 
@@ -323,7 +323,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="video-gallery-grid" class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title-with-line wow animate__animated animate__fadeInDown" data-wow-duration="0.8s">Video Gallery</h2>
+            <h2 class="section-title-with-line gsap-text-animate">Video Gallery</h2>
             <p class="section-subtitle-small wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">Watch Our Amazing Events</p>
         </div>
 
@@ -390,7 +390,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="testimonials" class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title-with-line wow animate__animated animate__fadeInDown" data-wow-duration="0.8s">What Our Customers Say</h2>
+            <h2 class="section-title-with-line gsap-text-animate">What Our Customers Say</h2>
             <p class="section-subtitle-small wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">Read testimonials from our happy
                 customers</p>
         </div>
@@ -437,6 +437,99 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
     </div>
 </section>
 
+<!-- Team Section -->
+<section id="team-section" class="py-5 bg-white">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title-with-line gsap-text-animate">Our Team</h2>
+            <p class="section-subtitle-small wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">Meet Our Expert Event Planners</p>
+        </div>
+        <div class="row g-4">
+            <?php
+            $team_members = get_posts(array(
+                'post_type' => 'team',
+                'numberposts' => 4,
+                'orderby' => 'ID',
+                'order' => 'DESC'
+            ));
+
+            $default_team_image = get_stylesheet_directory_uri() . '/images/default-user.webp';
+
+            if ($team_members):
+                foreach ($team_members as $index => $member):
+                    // Get social links
+                    $whatsapp = get_post_meta($member->ID, 'team_whatsapp', true);
+                    $facebook = get_post_meta($member->ID, 'team_facebook', true);
+                    $instagram = get_post_meta($member->ID, 'team_instagram', true);
+                    $twitter = get_post_meta($member->ID, 'team_twitter', true);
+
+                    // Get member image
+                    $member_image = get_the_post_thumbnail_url($member->ID, 'medium');
+                    if (!$member_image) {
+                        $member_image = $default_team_image;
+                    }
+
+                    // Check if has social links
+                    $has_social = ($whatsapp || $facebook || $instagram || $twitter);
+
+                    // Calculate animation delay
+                    $delay = $index * 0.1;
+                ?>
+            <div class="col-lg-3 col-md-6">
+                <div class="team-card wow animate__animated animate__fadeInUp" data-wow-delay="<?php echo $delay; ?>s">
+                    <!-- Team Member Image -->
+                    <div class="team-image wow animate__animated animate__zoomIn" data-wow-delay="<?php echo $delay; ?>s">
+                        <img src="<?php echo esc_url($member_image); ?>" alt="<?php echo esc_attr($member->post_title); ?>">
+
+                        <!-- Social Icons -->
+                        <?php if ($has_social): ?>
+                        <div class="team-social">
+                            <?php if ($whatsapp): ?>
+                            <a href="<?php echo esc_url($whatsapp); ?>" class="social-icon" target="_blank" rel="noopener">
+                                <i class="fa fa-whatsapp"></i>
+                            </a>
+                            <?php endif; ?>
+
+                            <?php if ($facebook): ?>
+                            <a href="<?php echo esc_url($facebook); ?>" class="social-icon" target="_blank" rel="noopener">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <?php endif; ?>
+
+                            <?php if ($instagram): ?>
+                            <a href="<?php echo esc_url($instagram); ?>" class="social-icon" target="_blank" rel="noopener">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                            <?php endif; ?>
+
+                            <?php if ($twitter): ?>
+                            <a href="<?php echo esc_url($twitter); ?>" class="social-icon" target="_blank" rel="noopener">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <?php endif; ?>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+
+                    <!-- Team Member Info -->
+                    <div class="team-info">
+                        <h4 class="wow animate__animated animate__fadeInLeftBig" data-wow-delay="<?php echo $delay + 0.2; ?>s">
+                            <?php echo esc_html(wp_trim_words($member->post_title, 10)); ?>
+                        </h4>
+                        <?php if ($member->post_content): ?>
+                        <p class="team-bio wow animate__animated animate__fadeInRightBig" data-wow-delay="<?php echo $delay + 0.3; ?>s">
+                            <?php echo esc_html(wp_trim_words($member->post_content, 20)); ?>
+                        </p>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>
+
 <!-- Call to Action Section -->
 <section id="home-cta" class="py-5 bg-gradient-primary text-white section-overlay">
     <div class="container text-center">
@@ -461,7 +554,7 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
 <section id="contact-section" class="contact-section py-5">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title-with-line wow animate__animated animate__fadeInDown" data-wow-duration="0.8s">Get In Touch</h2>
+            <h2 class="section-title-with-line gsap-text-animate">Get In Touch</h2>
             <p class="section-subtitle-small wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">Have questions? We'd love to hear
                 from you!</p>
         </div>

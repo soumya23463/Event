@@ -63,8 +63,17 @@ function theme_enqueue_styles()
 	// Enqueue Swiper JS
 	wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js', array(), '8.0.0', true);
 
+	// Enqueue GSAP
+	wp_enqueue_script('gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js', array(), '3.12.2', true);
+
+	// Enqueue GSAP ScrollTrigger
+	wp_enqueue_script('gsap-scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js', array('gsap'), '3.12.2', true);
+
+	// Enqueue Common GSAP Animations
+	wp_enqueue_script('gsap-common-animations', get_stylesheet_directory_uri() . '/js/gsap-common-animations.js', array('gsap', 'gsap-scrolltrigger'), $theme_version, true);
+
 	// Enqueue Swiper Init JS
-	wp_enqueue_script('swiper-init', get_stylesheet_directory_uri() . '/js/swiper-init.js', array('swiper-js'), $theme_version, true);
+	wp_enqueue_script('swiper-init', get_stylesheet_directory_uri() . '/js/swiper-init.js', array('swiper-js', 'gsap'), $theme_version, true);
 
 	$js_version = $theme_version . '.' . filemtime(get_stylesheet_directory() . $theme_scripts);
 

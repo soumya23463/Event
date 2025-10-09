@@ -22,8 +22,8 @@ $about_image = get_field('about_image', $page_id);
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="page-title wow animate__animated animate__fadeInDown">About Us</h1>
-                <p class="page-subtitle wow animate__animated animate__fadeInUp">Creating Unforgettable Moments</p>
+                <h1 class="page-title gsap-fade-scale-animate">About Us</h1>
+                <p class="page-subtitle gsap-fade-scale-animate">Creating Unforgettable Moments</p>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@ $about_image = get_field('about_image', $page_id);
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="wow animate__animated animate__fadeInRight">
-                    <h2 class="section-title-with-line text-left mb-3">Welcome to Krishna Events</h2>
+                    <h2 class="section-title-with-line text-left mb-3 gsap-text-animate">Welcome to Krishna Events</h2>
                     <p class="know-about-text">
                         <?php
                         if ($about_description) {
@@ -116,7 +116,7 @@ $about_image = get_field('about_image', $page_id);
 
 
 <!-- Quality Policy Section -->
-<section id="quality-policy" class="py-5 bg-light">
+<!-- <section id="quality-policy" class="py-5 bg-light">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-5 mb-4 mb-lg-0">
@@ -148,7 +148,7 @@ $about_image = get_field('about_image', $page_id);
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 
 

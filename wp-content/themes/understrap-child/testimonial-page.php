@@ -33,8 +33,8 @@ $default_image = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="page-title wow animate__animated animate__fadeInDown">Testimonials</h1>
-                <p class="page-subtitle wow animate__animated animate__fadeInUp">What Our Customers Say</p>
+                <h1 class="page-title gsap-fade-scale-animate">Testimonials</h1>
+                <p class="page-subtitle gsap-fade-scale-animate">What Our Customers Say</p>
             </div>
         </div>
     </div>
