@@ -50,12 +50,12 @@ $page_id = get_the_ID();
             <div class="col-lg-3 col-md-6">
                 <div class="service-list-card wow animate__animated animate__fadeInUp"
                     data-wow-delay="<?php echo ($index * 0.1); ?>s">
-                    <div class="row g-2">
-                        <div class="col-2">
+                    <div class="row g-3">
+                        <div class="col-auto">
                             <i class="fa <?php echo esc_attr($service_icon); ?> wow animate__animated animate__bounceIn"
                                 data-wow-delay="<?php echo $index * 0.1 + 0.2; ?>s"></i>
                         </div>
-                        <div class="col-10">
+                        <div class="col">
                             <h5 class="wow animate__animated animate__fadeInUp"
                                 data-wow-delay="<?php echo $index * 0.1 + 0.3; ?>s">
                                 <?php echo esc_html($service->post_title); ?>

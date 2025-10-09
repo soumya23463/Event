@@ -18,9 +18,10 @@ defined('ABSPATH') || exit;
         <div class="row g-4">
             <!-- Company Info -->
             <div class="col-lg-4 col-md-6">
-                <div class="footer-widget wow animate__animated animate__fadeInUp" data-wow-delay="0.1s"
+                <div class="footer-widget wow animate__animated animate__fadeInUpBig" data-wow-delay="0.1s"
                     data-wow-duration="0.8s">
-                    <h4><?php bloginfo('name'); ?></h4>
+                    <h4 class="wow animate__animated animate__fadeInRightBig" data-wow-delay="0.1s">
+                        <?php bloginfo('name'); ?></h4>
                     <p><?php
                         // Get the homepage ID
                         $home_id = get_option('page_on_front');
@@ -36,8 +37,6 @@ defined('ABSPATH') || exit;
                             } else {
                                 echo esc_html($about_text);
                             }
-                        } else {
-                            echo 'Your premier destination wedding and event planning partner. Creating unforgettable moments across India with passion and perfection.';
                         }
                         ?></p>
                     <div class="mt-3">
@@ -73,7 +72,7 @@ defined('ABSPATH') || exit;
 
             <!-- Quick Links -->
             <div class="col-lg-2 col-md-6">
-                <div class="footer-widget wow animate__animated animate__fadeInUp" data-wow-delay="0.2s"
+                <div class="footer-widget wow animate__animated animate__fadeInUpBig" data-wow-delay="0.2s"
                     data-wow-duration="0.8s">
                     <h4>Quick Links</h4>
                     <ul class="list-unstyled">
@@ -124,7 +123,7 @@ defined('ABSPATH') || exit;
 
             <!-- Contact Info -->
             <div class="col-lg-3 col-md-6">
-                <div class="footer-widget wow animate__animated animate__fadeInUp" data-wow-delay="0.4s"
+                <div class="footer-widget wow animate__animated animate__fadeInLeftBig" data-wow-delay="0.4s"
                     data-wow-duration="0.8s">
                     <h4>Contact Us</h4>
                     <ul class="list-unstyled">

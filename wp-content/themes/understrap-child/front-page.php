@@ -146,12 +146,12 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
             ?>
             <div class="col-lg-3 col-md-6">
                 <div class="service-list-card wow animate__animated animate__fadeInUp" data-wow-delay="<?php echo $delay; ?>s">
-                    <div class="row g-2">
-                        <div class="col-2">
+                    <div class="row g-3">
+                        <div class="col-auto">
                             <i class="fa <?php echo esc_attr($service_icon); ?> wow animate__animated animate__bounceIn"
                                 data-wow-delay="<?php echo $delay + 0.2; ?>s"></i>
                         </div>
-                        <div class="col-10">
+                        <div class="col">
                             <h5 class="wow animate__animated animate__fadeInUp"
                                 data-wow-delay="<?php echo $delay + 0.3; ?>s"><?php echo esc_html($service->post_title); ?>
                             </h5>
@@ -319,6 +319,73 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
     </div>
 </section>
 
+<!-- Video Gallery Section -->
+<section id="video-gallery-grid" class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title-with-line wow animate__animated animate__fadeInDown" data-wow-duration="0.8s">Video Gallery</h2>
+            <p class="section-subtitle-small wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">Watch Our Amazing Events</p>
+        </div>
+
+        <?php
+        $video_args = array(
+            'post_type' => 'video_gallery',
+            'posts_per_page' => 6,
+            'orderby' => 'date',
+            'order' => 'DESC'
+        );
+
+        $video_query = new WP_Query($video_args);
+
+        if ($video_query->have_posts()) :
+            $video_index = 0;
+        ?>
+
+        <div class="gallery-grid">
+            <?php while ($video_query->have_posts()) : $video_query->the_post();
+                    // Use title as YouTube URL
+                    $youtube_url = get_the_title();
+
+                    // Extract YouTube video ID from URL
+                    preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/', $youtube_url, $matches);
+                    $youtube_id = isset($matches[1]) ? $matches[1] : '';
+
+                    $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                    if (!$thumbnail && $youtube_id) {
+                        $thumbnail = 'https://img.youtube.com/vi/' . $youtube_id . '/maxresdefault.jpg';
+                    }
+
+                    $delay = 0.1 * $video_index;
+                    $video_index++;
+                ?>
+
+            <div class="gallery-item wow animate__animated animate__flipInY" data-wow-delay="<?php echo $delay; ?>s" data-wow-duration="0.8s">
+                <div class="gallery-card">
+                    <?php if ($thumbnail): ?>
+                    <img src="<?php echo esc_url($thumbnail); ?>" alt="Video" class="gallery-image">
+                    <?php endif; ?>
+
+                    <div class="gallery-overlay">
+                        <a href="<?php echo esc_url($youtube_url); ?>" class="gallery-zoom" data-fancybox="video-gallery">
+                            <i class="fa fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <?php endwhile; ?>
+        </div>
+
+        <?php else: ?>
+        <div class="text-center py-5">
+            <p class="lead">No videos found.</p>
+        </div>
+        <?php endif;
+        wp_reset_postdata();
+        ?>
+    </div>
+</section>
+
 <!-- Testimonials Section -->
 <section id="testimonials" class="py-5 bg-light">
     <div class="container">
@@ -366,6 +433,26 @@ $whatsapp_number = get_field('whatsapp_number', $home_id);
                 </div>
             </div>
             <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section id="home-cta" class="py-5 bg-gradient-primary text-white section-overlay">
+    <div class="container text-center">
+        <div class="wow animate__animated animate__zoomIn" data-wow-duration="0.8s">
+            <h2 class="mb-4" style="font-size: 2.5rem; font-weight: 700;">Ready to Plan Your Dream Event?</h2>
+            <p class="lead mb-4" style="font-size: 1.2rem;">Let's create something magical together. Contact us today
+                for a free consultation!</p>
+            <?php
+            $contact_phone = get_field('phone', $home_id);
+            $phone_link = $contact_phone ? 'tel:' . preg_replace('/[^0-9+]/', '', $contact_phone) : '#contact-section';
+            ?>
+            <a href="<?php echo esc_url($phone_link); ?>" class="btn btn-light btn-lg wow animate__animated animate__pulse"
+                data-wow-delay="0.3s" data-wow-duration="1s"
+                style="padding: 15px 40px; font-weight: 600;">
+                <i class="fa fa-phone me-2"></i>Get in Touch
+            </a>
         </div>
     </div>
 </section>

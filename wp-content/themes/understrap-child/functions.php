@@ -55,6 +55,9 @@ function theme_enqueue_styles()
 	$swiper_css_version = $theme_version . '.' . filemtime(get_stylesheet_directory() . '/css/swiper-slider-custom.css');
 	wp_enqueue_style('swiper-slider-custom', get_stylesheet_directory_uri() . '/css/swiper-slider-custom.css', array(), $swiper_css_version);
 
+	// Enqueue Font Awesome 4 (for fa fa-* classes)
+	wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', array(), '4.7.0');
+
 	wp_enqueue_script('jquery');
 
 	// Enqueue Swiper JS
@@ -335,3 +338,14 @@ function enqueue_animate_css()
 	wp_add_inline_script('wow-js', 'new WOW().init();');
 }
 add_action('wp_enqueue_scripts', 'enqueue_animate_css');
+
+
+/**
+ * Enqueue Fancybox for Video Gallery
+ */
+function enqueue_fancybox_assets()
+{
+	wp_enqueue_style('fancybox-css', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css');
+	wp_enqueue_script('fancybox-js', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js', array('jquery'), null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_fancybox_assets');
