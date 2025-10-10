@@ -29,36 +29,10 @@ $about_image = get_field('about_image', $page_id);
     </div>
 </section>
 
-<!-- About Krishna Events Section -->
-<section id="about-company" class="py-5 bg-white">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 mb-4 mb-lg-0">
-                <div class="wow animate__animated animate__fadeInRight">
-                    <h2 class="section-title-with-line text-left mb-3 gsap-text-animate">Welcome to Krishna Events</h2>
-                    <p class="know-about-text">
-                        <?php
-                        if ($about_description) {
-                            echo $about_description;
-                        } else {
-                            // Default text if ACF field is empty
-                            echo "Krishna Events is a premier event management company dedicated to creating unforgettable experiences. With over a decade of expertise in wedding planning, corporate events, and social celebrations, we bring your vision to life with meticulous attention to detail, creative excellence, and unparalleled service quality.";
-                        }
-                        ?>
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="wow animate__animated animate__fadeInLeft">
-                    <?php if ($about_image): ?>
-                    <img src="<?php echo esc_url($about_image['url']); ?>"
-                        alt="<?php echo esc_attr($about_image['alt']); ?>" class="img-fluid about-image shadow">
-                    <?php endif; ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- About Section -->
+<?php
+get_template_part('template-parts/section-about');
+?>
 
 <!-- Mission & Vision Section -->
 <!-- <section id="mission-vision" class="py-5 bg-light">
@@ -94,25 +68,9 @@ $about_image = get_field('about_image', $page_id);
 </section> -->
 
 <!-- Call to Action Section -->
-<section id="about-cta" class="py-5 bg-gradient-primary text-white section-overlay">
-    <div class="container text-center">
-        <div class="wow animate__animated animate__zoomIn">
-            <h2 class="mb-4" style="font-size: 2.5rem; font-weight: 700;">Ready to Plan Your Dream Event?</h2>
-            <p class="lead mb-4" style="font-size: 1.2rem;">Let's create something magical together. Contact us today
-                for a free consultation!</p>
-            <?php
-            // Get phone from homepage
-            $home_id = get_option('page_on_front');
-            $contact_phone = get_field('phone', $home_id);
-            $phone_link = $contact_phone ? 'tel:' . preg_replace('/[^0-9+]/', '', $contact_phone) : '#contact-section';
-            ?>
-            <a href="<?php echo esc_url($phone_link); ?>" class="btn btn-light btn-lg"
-                style="padding: 15px 40px; font-weight: 600;">
-                <i class="fa fa-phone me-2"></i>Get in Touch
-            </a>
-        </div>
-    </div>
-</section>
+<?php
+get_template_part('template-parts/section-cta');
+?>
 
 
 <!-- Quality Policy Section -->
@@ -154,10 +112,6 @@ $about_image = get_field('about_image', $page_id);
 
 
 
-<!-- WhatsApp Floating Button -->
-<a href="https://wa.me/919876543210?text=Hi%2C%20I%20would%20like%20to%20inquire%20about%20your%20event%20planning%20services"
-    class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp">
-    <i class="fa fa-whatsapp"></i>
-</a>
+
 
 <?php get_footer(); ?>

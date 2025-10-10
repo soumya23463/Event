@@ -181,6 +181,20 @@ defined('ABSPATH') || exit;
     </div>
 </footer>
 
+<!-- WhatsApp Floating Button -->
+<?php
+// Get WhatsApp number from homepage ACF field
+$home_id = get_option('page_on_front');
+$whatsapp_number = get_field('whatsapp_number', $home_id);
+
+if ($whatsapp_number) :
+?>
+<a href="https://wa.me/<?php echo esc_attr($whatsapp_number); ?>?text=Hi%2C%20I%20would%20like%20to%20inquire%20about%20your%20event%20planning%20services"
+    class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp">
+    <i class="fa fa-whatsapp"></i>
+</a>
+<?php endif; ?>
+
 <?php wp_footer(); ?>
 
 </div><!-- #page -->

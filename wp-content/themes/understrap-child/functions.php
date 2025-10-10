@@ -223,38 +223,6 @@ function my_register_testimonials_cpt()
 add_action('init', 'my_register_testimonials_cpt');
 
 
-/**
- * Register Slider Custom Post Type
- */
-function my_register_slider_cpt()
-{
-	$labels = array(
-		'name'               => 'Sliders',
-		'singular_name'      => 'Slider',
-		'add_new'            => 'Add New Slider',
-		'add_new_item'       => 'Add New Slider',
-		'edit_item'          => 'Edit Slider',
-		'new_item'           => 'New Slider',
-		'view_item'          => 'View Slider',
-		'search_items'       => 'Search Sliders',
-		'not_found'          => 'No sliders found',
-		'not_found_in_trash' => 'No sliders found in Trash',
-	);
-
-	$args = array(
-		'labels'             => $labels,
-		'public'             => true,
-		'has_archive'        => false,
-		'rewrite'            => array('slug' => 'slider'),
-		'supports'           => array('title', 'editor', 'thumbnail'),
-		'menu_icon'          => 'dashicons-images-alt2',
-		'show_in_rest'       => true,
-	);
-
-	register_post_type('slider', $args);
-}
-add_action('init', 'my_register_slider_cpt');
-
 
 /**
  * Register Video Gallery Custom Post Type
