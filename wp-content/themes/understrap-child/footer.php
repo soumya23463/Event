@@ -23,11 +23,9 @@ defined('ABSPATH') || exit;
                     <h4 class="wow animate__animated animate__fadeInRightBig" data-wow-delay="0.1s">
                         <?php bloginfo('name'); ?></h4>
                     <p><?php
-                        // Get the homepage ID
-                        $home_id = get_option('page_on_front');
 
                         // Get the about description from homepage custom field
-                        $about_description = get_field('about_description', $home_id);
+                        $about_description = get_field('about_description');
 
                         if ($about_description) {
                             // Show the custom field content (limit to first 500 characters)
@@ -42,9 +40,9 @@ defined('ABSPATH') || exit;
                     <div class="mt-3">
                         <?php
                         // Get social media links from homepage custom fields
-                        $facebook_url = get_field('facebook', $home_id);
-                        $instagram_url = get_field('instagram', $home_id);
-                        $youtube_url = get_field('youtube', $home_id);
+                        $facebook_url = get_field('facebook');
+                        $instagram_url = get_field('instagram');
+                        $youtube_url = get_field('youtube');
                         ?>
 
 
@@ -129,12 +127,12 @@ defined('ABSPATH') || exit;
                     <ul class="list-unstyled">
                         <?php
                         // Get the homepage ID
-                        $home_id = get_option('page_on_front');
+                      
 
                         // Get contact info from homepage custom fields
-                        $phone = get_field('phone', $home_id);
-                        $email = get_field('email', $home_id);
-                        $address = get_field('address', $home_id);
+                        $phone = get_field('phone');
+                        $email = get_field('email');
+                        $address = get_field('address');
                         ?>
 
                         <?php if ($phone): ?>
@@ -184,8 +182,7 @@ defined('ABSPATH') || exit;
 <!-- WhatsApp Floating Button -->
 <?php
 // Get WhatsApp number from homepage ACF field
-$home_id = get_option('page_on_front');
-$whatsapp_number = get_field('whatsapp_number', $home_id);
+$whatsapp_number = get_field('whatsapp_number');
 
 if ($whatsapp_number) :
 ?>

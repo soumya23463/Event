@@ -18,7 +18,8 @@ $page_id = get_the_ID();
         <div class="row">
             <div class="col-12 text-center">
                 <h1 class="page-title gsap-fade-scale-animate wow animate__animated animate__fadeInDown">Contact Us</h1>
-                <p class="page-subtitle gsap-fade-scale-animate wow animate__animated animate__fadeInDown">Get In Touch With Us</p>
+                <p class="page-subtitle gsap-fade-scale-animate wow animate__animated animate__fadeInDown">Get In Touch
+                    With Us</p>
             </div>
         </div>
     </div>
@@ -28,18 +29,16 @@ $page_id = get_the_ID();
 <section id="contact-section" class="py-5">
     <div class="container">
         <?php
-        // Get the homepage ID
-        $home_id = get_option('page_on_front');
 
         // Get contact info from homepage custom fields
-        $phone = get_field('phone', $home_id);
-        $email = get_field('email', $home_id);
-        $address = get_field('address', $home_id);
-        $business_hours = get_field('business_hours', $home_id);
-        $facebook_url = get_field('facebook', $home_id);
-        $instagram_url = get_field('instagram', $home_id);
-        $twitter_url = get_field('twitter', $home_id);
-        $youtube_url = get_field('youtube', $home_id);
+        $phone = get_field('phone');
+        $email = get_field('email');
+        $address = get_field('address');
+        $business_hours = get_field('business_hours');
+        $facebook_url = get_field('facebook');
+        $instagram_url = get_field('instagram');
+        $twitter_url = get_field('twitter');
+        $youtube_url = get_field('youtube');
         ?>
 
         <div class="row g-4">
@@ -111,7 +110,7 @@ $page_id = get_the_ID();
 
 <!-- Map Section -->
 <?php
-$map_embed_url = get_field('map_embed_url', $home_id);
+$map_embed_url = get_field('map_embed_url');
 if ($map_embed_url):
 ?>
 <section id="map-section" class="py-0" class="wow animate__animated animate__fadeInRightBig" data-wow-delay="0.24s">
