@@ -207,6 +207,39 @@
     box-shadow: 0 6px 20px rgba(199, 156, 108, 0.4);
 }
 
+/* Query Button in Navbar */
+.nav-query-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white !important;
+    padding: 0.75rem 1.75rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(199, 156, 108, 0.4);
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-query-btn:hover {
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(199, 156, 108, 0.6);
+    color: white !important;
+    text-decoration: none;
+}
+
+.nav-query-btn i {
+    font-size: 1rem;
+}
+
+/* Query Modal */
+
+
 /* Mobile Toggle */
 .navbar-toggler {
     border: 2px solid var(--primary-color);
@@ -1923,6 +1956,7 @@ footer a:hover {
 .fancybox__content > .fancybox__iframe {
     background: #000000;
 }
+
 
 /* ========================================
    Contact Page Styles

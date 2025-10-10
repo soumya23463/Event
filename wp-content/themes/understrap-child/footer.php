@@ -195,6 +195,21 @@ if ($whatsapp_number) :
 </a>
 <?php endif; ?>
 
+<!-- Query Modal -->
+<div class="modal fade" id="queryModal" tabindex="-1" aria-labelledby="queryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="queryModalLabel">Send Us a Query</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-4 pb-4">
+                <?php echo do_shortcode('[contact-form-7 id="ceb1c3e" title="Contact form 1"]'); ?>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?php wp_footer(); ?>
 
 </div><!-- #page -->

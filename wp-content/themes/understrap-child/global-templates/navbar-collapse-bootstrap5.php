@@ -51,12 +51,12 @@ $container = get_theme_mod('understrap_container_type');
                 ?>
             </div>
 
-            <!-- Contact CTA Button -->
-            <!-- <div class="ms-lg-3 mt-3 mt-lg-0 wow animate__animated animate__bounceIn" data-wow-delay="0.6s">
-                <a href="#contact-section" class="btn btn-primary btn-sm">
-                    <i class="fa fa-phone me-2"></i>Get Quote
-                </a>
-            </div> -->
+            <!-- Query CTA Button -->
+            <div class="ms-lg-3 mt-3 mt-lg-0 wow animate__animated animate__bounceIn" data-wow-delay="0.6s">
+                <button type="button" class="nav-query-btn" data-bs-toggle="modal" data-bs-target="#queryModal">
+                    <i class="fa fa-envelope me-2"></i>Send Query
+                </button>
+            </div>
         </div>
 
     </div><!-- .container(-fluid) -->
