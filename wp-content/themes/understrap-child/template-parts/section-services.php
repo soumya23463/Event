@@ -49,7 +49,7 @@
         <div class="text-center mt-5">
             <a href="<?php echo esc_url(get_permalink(get_page_by_path('services'))); ?>"
                 class="hero-btn wow animate__animated animate__fadeInUp" data-wow-delay="0.5s">
-                View All Services
+                View More
             </a>
         </div>
         <?php endif; ?>
