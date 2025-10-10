@@ -48,20 +48,14 @@ function theme_enqueue_styles()
 	// Enqueue Krishna Events custom CSS (main styles with responsiveness)
 	wp_enqueue_style('krishna-events-custom', get_stylesheet_directory_uri() . '/css/krishna-events-custom.css', array(), $theme_version);
 
-	// Enqueue Swiper CSS
-	wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css', array(), '8.0.0');
-
-	// Enqueue Swiper Slider Custom CSS (with cache busting)
-	$swiper_css_version = $theme_version . '.' . filemtime(get_stylesheet_directory() . '/css/swiper-slider-custom.css');
-	wp_enqueue_style('swiper-slider-custom', get_stylesheet_directory_uri() . '/css/swiper-slider-custom.css', array(), $swiper_css_version);
+	// Enqueue Hero Video CSS (with cache busting)
+	$hero_video_css_version = $theme_version . '.' . filemtime(get_stylesheet_directory() . '/css/hero-video.css');
+	wp_enqueue_style('hero-video-css', get_stylesheet_directory_uri() . '/css/hero-video.css', array(), $hero_video_css_version);
 
 	// Enqueue Font Awesome 4 (for fa fa-* classes)
 	wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', array(), '4.7.0');
 
 	wp_enqueue_script('jquery');
-
-	// Enqueue Swiper JS
-	wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js', array(), '8.0.0', true);
 
 	// Enqueue GSAP
 	wp_enqueue_script('gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js', array(), '3.12.2', true);
@@ -71,9 +65,6 @@ function theme_enqueue_styles()
 
 	// Enqueue Common GSAP Animations
 	wp_enqueue_script('gsap-common-animations', get_stylesheet_directory_uri() . '/js/gsap-common-animations.js', array('gsap', 'gsap-scrolltrigger'), $theme_version, true);
-
-	// Enqueue Swiper Init JS
-	wp_enqueue_script('swiper-init', get_stylesheet_directory_uri() . '/js/swiper-init.js', array('swiper-js', 'gsap'), $theme_version, true);
 
 	$js_version = $theme_version . '.' . filemtime(get_stylesheet_directory() . $theme_scripts);
 

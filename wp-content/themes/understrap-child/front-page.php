@@ -7,77 +7,78 @@
 
 get_header(); ?>
 
-<!-- Hero Swiper Slider Section - Krishna Events Style -->
-<section id="hero-swiper" class="hero-swiper-section">
+<!-- Hero Video Background Section - Krishna Events Style -->
+<section id="hero-video" class="hero-video-section">
     <?php
-    // Query for slider posts (Custom Post Type)
-    $slider_args = array(
-        'post_type'      => 'slider',
-        'posts_per_page' => 3,
-        'orderby'        => 'date',
-        'order'          => 'DESC',
-        'post_status'    => 'publish'
-    );
+    // Get the homepage ID
+    $home_id = get_option('page_on_front');
 
-    $slider_query = new WP_Query($slider_args);
+    // Get ACF video field
+    $hero_video_url = get_field('hero_video_url', $home_id);
+    $hero_title = get_field('hero_title', $home_id);
+    $hero_subtitle = get_field('hero_subtitle', $home_id);
+    $hero_description = get_field('hero_description', $home_id);
+    $hero_button_text = get_field('hero_button_text', $home_id) ?: 'Read More';
+    $hero_button_link = get_field('hero_button_link', $home_id) ?: '#about';
 
-    if ($slider_query->have_posts()) :
+    if ($hero_video_url) :
+        // Extract YouTube video ID
+        preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/', $hero_video_url, $matches);
+        $youtube_id = isset($matches[1]) ? $matches[1] : '';
     ?>
-    <div class="next-container-center">
-        <div class="swiper" id="heroSwiper">
-            <div class="swiper-wrapper">
-                <?php
-                    $slide_index = 0;
-                    while ($slider_query->have_posts()) : $slider_query->the_post();
-                        $slide_index++;
+    <div class="hero-video-container">
+        <!-- YouTube Video Background -->
+        <?php if ($youtube_id) : ?>
+        <div class="hero-video-bg">
+            <iframe
+                src="https://www.youtube.com/embed/<?php echo esc_attr($youtube_id); ?>?autoplay=1&mute=1&loop=1&playlist=<?php echo esc_attr($youtube_id); ?>&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <?php else : ?>
+        <!-- Fallback for direct video file -->
+        <video class="hero-video-bg" autoplay muted loop playsinline>
+            <source src="<?php echo esc_url($hero_video_url); ?>" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <?php endif; ?>
 
-                        // Get slider data
-                        $slide_title = get_the_title(); // WordPress title
-                        $slide_subtitle = get_field('subtitle'); // ACF field only
-                        $slide_description = get_the_content(); // WordPress content editor
-                        $slide_image_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); // Featured image
+        <!-- Overlay -->
+        <div class="hero-video-overlay"></div>
 
+        <!-- Content -->
+        <div class="hero-video-content">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 text-center">
+                        <?php if ($hero_subtitle) : ?>
+                        <h3 class="hero-subtitle wow animate__animated animate__fadeInDown" data-wow-delay="0.2s">
+                            <?php echo esc_html($hero_subtitle); ?>
+                        </h3>
+                        <?php endif; ?>
 
+                        <?php if ($hero_title) : ?>
+                        <h1 class="hero-title wow animate__animated animate__fadeInUp" data-wow-delay="0.4s">
+                            <?php echo esc_html($hero_title); ?>
+                        </h1>
+                        <?php endif; ?>
 
-                        $slide_button_text = 'Read More';
-                        $slide_button_link = get_permalink(get_page_by_path('about-page'));
-                    ?>
-                <div class="swiper-slide">
-                    <div class="swiper-slide-block">
-                        <div class="swiper-slide-block-img wow animate__animated animate__fadeInRight"
-                            data-wow-duration="1s">
-                            <a href="<?php echo esc_url($slide_button_link); ?>">
-                                <img src="<?php echo esc_url($slide_image_url); ?>"
-                                    alt="<?php echo esc_attr($slide_title); ?>">
-                            </a>
-                        </div>
-                        <div class="swiper-slide-block-text">
-                            <h2 class="next-main-title wow animate__animated animate__fadeInDown" data-wow-delay="0.2s"
-                                data-wow-duration="0.8s">
-                                <a
-                                    href="<?php echo esc_url($slide_button_link); ?>"><?php echo esc_html($slide_title); ?></a>
-                            </h2>
-                            <h3 class="next-main-subtitle wow animate__animated animate__fadeInUp" data-wow-delay="0.4s"
-                                data-wow-duration="0.8s"><?php echo wp_trim_words($slide_subtitle, 5); ?></h3>
-                            <?php if ($slide_description) : ?>
-                            <p class="next-paragraph wow animate__animated animate__fadeInUp" data-wow-delay="0.6s"
-                                data-wow-duration="0.8s"><?php echo wp_trim_words($slide_description, 25); ?></p>
-                            <?php endif; ?>
-                            <a class="next-link wow animate__animated animate__fadeInLeft" data-wow-delay="0.8s"
-                                data-wow-duration="0.8s"
-                                href="<?php echo esc_url($slide_button_link); ?>"><?php echo esc_html($slide_button_text); ?></a>
-                            <span class="next-number wow animate__animated animate__fadeIn" data-wow-delay="0.3s"
-                                data-wow-duration="1s"><?php echo $slide_index; ?></span>
-                        </div>
+                        <?php if ($hero_description) : ?>
+                        <p class="hero-description wow animate__animated animate__fadeInUp" data-wow-delay="0.6s">
+                            <?php echo esc_html($hero_description); ?>
+                        </p>
+                        <?php endif; ?>
+
+                        <?php if ($hero_button_text && $hero_button_link) : ?>
+                        <a href="<?php echo esc_url($hero_button_link); ?>" class="hero-btn wow animate__animated animate__fadeInUp" data-wow-delay="0.8s">
+                            <?php echo esc_html($hero_button_text); ?>
+                        </a>
+                        <?php endif; ?>
                     </div>
                 </div>
-                <?php endwhile;
-                    wp_reset_postdata(); ?>
             </div>
-
-            <!-- Navigation Buttons -->
-            <div class="swiper-button-next"><i class="fa fa-arrow-right"></i></div>
-            <div class="swiper-button-prev"><i class="fa fa-arrow-left"></i></div>
         </div>
     </div>
     <?php endif; ?>
