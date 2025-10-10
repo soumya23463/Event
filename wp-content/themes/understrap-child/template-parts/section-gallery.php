@@ -44,7 +44,6 @@
                     <?php endif; ?>
 
                     <div class="gallery-overlay">
-                        <h4><?php the_title(); ?></h4>
                         <a href="<?php echo esc_url($thumbnail); ?>" class="gallery-zoom" data-fancybox="gallery"
                             data-caption="<?php echo esc_attr(get_the_title()); ?>">
                             <i class="fa fa-search-plus"></i>

@@ -315,5 +315,33 @@ function enqueue_fancybox_assets()
 {
 	wp_enqueue_style('fancybox-css', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css');
 	wp_enqueue_script('fancybox-js', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js', array('jquery'), null, true);
+
+	// Initialize Fancybox
+	wp_add_inline_script('fancybox-js', '
+		document.addEventListener("DOMContentLoaded", function() {
+			if (typeof Fancybox !== "undefined") {
+				Fancybox.bind("[data-fancybox]", {
+					// Options
+					youtube: {
+						autoplay: 1,
+						controls: 1
+					},
+					Toolbar: {
+						display: {
+							left: [],
+							middle: [],
+							right: ["close"]
+						}
+					},
+					backdropClick: "close",
+					Carousel: {
+						friction: 0.8
+					},
+					opacity: 0.8,
+					parentEl: document.body
+				});
+			}
+		});
+	');
 }
 add_action('wp_enqueue_scripts', 'enqueue_fancybox_assets');
